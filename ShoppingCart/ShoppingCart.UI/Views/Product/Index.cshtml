@@ -1,0 +1,43 @@
+﻿@model ShoppingCart.Data.Entity.Product
+@{
+    ViewBag.Title = Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductName;
+}
+
+
+@if (Model.ProductImages.Count > 0)
+{
+    <div>
+        <img class="img-responsive" width="300" height="300" src="@Url.Action("GetImage", "Image",
+                        new {productImageID= Model.ProductImages.OrderByDescending(x=>x.DisplayOrder).First().ProductImageID })" />
+    </div>
+}
+
+@foreach (var item in Model.ProductImages.OrderByDescending(x => x.DisplayOrder).Skip(1))
+{
+    <img class="img-responsive" width="100" height="100"  src="@Url.Action("GetImage", "Image",
+                        new {item.ProductImageID})" />
+}
+
+@Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductName
+<hr />
+@Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductDescription
+<hr />
+
+
+@using (Html.BeginForm("AddToCart","Cart",FormMethod.Post, new {}))
+{
+    @Html.Hidden("ProductID",Model.ProductID)
+    
+    if (ViewBag.ProductVariantValueID != null)
+    {
+        @Html.DropDownList("ProductVariantValueID", null, new { }) <br /> <br />
+    }
+
+    @Html.TextBox("Count", 1, new { type = "number", min = "0", max = (int) ViewBag.ProductInventory })
+   
+    <p>
+            <input type="submit" value="Add To Cart" />
+    </p>
+    
+}
+

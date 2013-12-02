@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8BA740F2-E47B-48B1-BF04-5CCEFF1ED5DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShoppingCart.Data</RootNamespace>
+    <AssemblyName>ShoppingCart.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\ShoppingCart\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IOrderItemRepository.cs" />
+    <Compile Include="Abstract\IAddressRepository.cs" />
+    <Compile Include="Abstract\ICartRepository.cs" />
+    <Compile Include="Abstract\ICategoryRepository.cs" />
+    <Compile Include="Abstract\ICityRepository.cs" />
+    <Compile Include="Abstract\IContext.cs" />
+    <Compile Include="Abstract\ILanguageRepository.cs" />
+    <Compile Include="Abstract\IProductImageRepository.cs" />
+    <Compile Include="Abstract\IProductRepository.cs" />
+    <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Concrete\OrderItemRepository.cs" />
+    <Compile Include="Concrete\ApplicationDbContext.cs" />
+    <Compile Include="Concrete\CategoryRepository.cs" />
+    <Compile Include="Concrete\CityRepository.cs" />
+    <Compile Include="Concrete\Context.cs" />
+    <Compile Include="Concrete\AddressRepository.cs" />
+    <Compile Include="Concrete\CartRepository.cs" />
+    <Compile Include="Concrete\LanguageRepository.cs" />
+    <Compile Include="Concrete\ProductImageRepository.cs" />
+    <Compile Include="Concrete\ProductRepository.cs" />
+    <Compile Include="Concrete\EfRepository.cs" />
+    <Compile Include="Entity\Address.cs" />
+    <Compile Include="Entity\ApplicationUser.cs" />
+    <Compile Include="Entity\Cart.cs" />
+    <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\CategoryNode.cs" />
+    <Compile Include="Entity\CategoryTranslation.cs" />
+    <Compile Include="Entity\City.cs" />
+    <Compile Include="Entity\Language.cs" />
+    <Compile Include="Entity\Order.cs" />
+    <Compile Include="Entity\OrderItem.cs" />
+    <Compile Include="Entity\PaymentMethod.cs" />
+    <Compile Include="Entity\Product.cs" />
+    <Compile Include="Entity\ProductAttribute.cs" />
+    <Compile Include="Entity\ProductAttributeTranslation.cs" />
+    <Compile Include="Entity\ProductAttributeValue.cs" />
+    <Compile Include="Entity\ProductAttributeValueTranslation.cs" />
+    <Compile Include="Entity\ProductRelation.cs" />
+    <Compile Include="Entity\ProductVariant.cs" />
+    <Compile Include="Entity\ProductVariantTranslation.cs" />
+    <Compile Include="Entity\ProductVariantValue.cs" />
+    <Compile Include="Entity\ProductVariantValueTranslation.cs" />
+    <Compile Include="Entity\ProductComment.cs" />
+    <Compile Include="Entity\ProductImage.cs" />
+    <Compile Include="Entity\ProductTranslation.cs" />
+    <Compile Include="Entity\ShippingMethod.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

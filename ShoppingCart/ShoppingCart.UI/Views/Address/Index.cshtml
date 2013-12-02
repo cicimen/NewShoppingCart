@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ShoppingCart.Data.Entity.Address>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    <button id="modal-opener">Open Dialog</button>
+</p>
+
+@Html.Partial("_AddressTable", Model)
+
+@{Html.RenderAction("Create", "Address", null);}
+
+@Html.Partial("_Edit",null)
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#dialog-modal").dialog({
+                autoOpen: false,
+                width: 700,
+                height: 450,
+                show: {
+                    effect: "shake",
+                    duration: 100
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+        });
+        $("#modal-opener").click(function () {
+            $("#dialog-modal").dialog("open");
+        });
+
+        function onSuccess() {
+            $("#dialog-modal").dialog("close");
+        }
+    </script>
+}
