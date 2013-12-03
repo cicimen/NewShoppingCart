@@ -12,16 +12,24 @@ namespace ShoppingCart.Service
         private readonly IContext _context;
         private readonly ICartRepository _carts;
         private readonly string _cartSessionKey = "CartID";
-        private HttpContext _contextBase;
+        //private HttpContext _contextBase;
         private string _shoppingCartID;
 
-        public CartService(IContext context,HttpContextBase contextBase=null)
+        public CartService(IContext context)
         {
             _context = context;
             _carts = context.Carts;
-            _shoppingCartID = GetCartId(contextBase);
-            _contextBase = contextBase.ApplicationInstance.Context ?? HttpContext.Current;
+            //_shoppingCartID = GetCartId(contextBase);
+            //_contextBase = contextBase.ApplicationInstance.Context ?? HttpContext.Current;
         }
+
+        public CartService GetCart(HttpContextBase context)
+        {
+            _shoppingCartID = GetCartId(context);
+            return this;
+        }
+
+      
 
         public IQueryable<Cart> Carts()
         {

@@ -62,13 +62,13 @@ namespace ShoppingCart.UI.Helpers
             ApplicationDbContext dbContext = new ApplicationDbContext();
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.LoadXml(xml);
-            XmlNodeList productAttributes = xmlDocument.SelectNodes("/Attributes/ProductAttribute");
-            foreach (XmlNode item in productAttributes)
+            XmlNodeList productVariants = xmlDocument.SelectNodes("/Variants/ProductVariant");
+            foreach (XmlNode item in productVariants)
             {
-                 int productAttributeID = int.Parse(item.Attributes["ID"].Value);
-                 int productAttributeValueID = int.Parse(item.FirstChild.FirstChild.InnerText);
-                 result.Add(dbContext.ProductAttributeTranslations.FirstOrDefault(x => x.Language.LanguageCode == languageCode && x.ProductAttributeID == productAttributeID).ProductAttributeName
-                     , dbContext.ProductAttributeValueTranslations.FirstOrDefault(x => x.Language.LanguageCode == languageCode && x.ProductAttributeValueID == productAttributeValueID).ProductAttributeValueName);
+                 int productVariantID = int.Parse(item.Attributes["ID"].Value);
+                 int productVariantValueID = int.Parse(item.FirstChild.FirstChild.InnerText);
+                 result.Add(dbContext.ProductVariantTranslations.FirstOrDefault(x => x.Language.LanguageCode == languageCode && x.ProductVariantID == productVariantID).ProductVariantName
+                     , dbContext.ProductVariantValueTranslations.FirstOrDefault(x => x.Language.LanguageCode == languageCode && x.ProductVariantValueID == productVariantValueID).ProductVariantValueName);
             }
             sb.AppendLine("<span>");
             foreach (var item in result)
@@ -83,8 +83,8 @@ namespace ShoppingCart.UI.Helpers
         public static MvcHtmlString GetCategoryBreadCrumb(this HtmlHelper html, string categoryLinkText, Func<string,string> categoryURL)
         { 
             HttpContext context = HttpContext.Current;
-            EFCategoryRepository categoryRepository = new EFCategoryRepository();
-            Category currentCategory = categoryRepository.Categories.SingleOrDefault(x=>x.CategoryURLText == categoryLinkText);
+            ApplicationDbContext dbContext = new ApplicationDbContext();
+            Category currentCategory = dbContext.Categories.SingleOrDefault(x => x.CategoryURLText == categoryLinkText);
             if(currentCategory == null)
             {
                 return null;
@@ -146,11 +146,11 @@ namespace ShoppingCart.UI.Helpers
             }
         }
 
-        public static string CreateXmlForAttribute(int productAttributeValueID)
+        public static string CreateXmlForAttribute(int productVariantValueID)
         {
             ApplicationDbContext context = new ApplicationDbContext();
-            ProductAttributeValue productAttributeValue =  context.ProductAttributeValues.Where(x => x.ProductAttributeValueID == productAttributeValueID).FirstOrDefault();
-            if (productAttributeValue == null)
+            ProductVariantValue productVariantValue = context.ProductVariantValues.Where(x => x.ProductVariantValueID == productVariantValueID).FirstOrDefault();
+            if (productVariantValue == null)
             {
                 return null;
             }
@@ -158,11 +158,11 @@ namespace ShoppingCart.UI.Helpers
             {
                 XDocument xml = new XDocument
                     (
-                        new XElement("Attributes" ,
-                                new XElement("ProductAttribute",
-                                    new XAttribute("ID", productAttributeValue.ProductAttributeID),
-                                    new XElement("ProductAttributeValue", 
-                                            new XElement("Value",productAttributeValue.ProductAttributeValueID) )
+                        new XElement("Variants" ,
+                                new XElement("ProductVariant",
+                                    new XAttribute("ID", productVariantValue.ProductVariantID),
+                                    new XElement("ProductAttributeValue",
+                                            new XElement("Value", productVariantValue.ProductVariantValueID))
                     )));
                 return xml.ToString();
             }

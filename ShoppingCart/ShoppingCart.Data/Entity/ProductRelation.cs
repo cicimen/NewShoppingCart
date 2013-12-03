@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShoppingCart.Data.Entity
 {
@@ -10,13 +11,13 @@ namespace ShoppingCart.Data.Entity
         public int DisplayOrder { get; set; }
 
 
-
+        
         [ForeignKey("ProductID")]
-        [InverseProperty("RelatedProducts")]
+        //[InverseProperty("RelatedProducts")]
         public Product Product { get; set; }
 
 
-
+        
         [ForeignKey("RelatedProductID")]
         public Product RelatedProduct { get; set; }
     }

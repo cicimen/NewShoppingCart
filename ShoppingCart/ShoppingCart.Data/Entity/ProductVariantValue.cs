@@ -10,7 +10,7 @@ namespace ShoppingCart.Data.Entity
     [Table("ProductVariantValue")]
     public class ProductVariantValue
     {
-        public int ProductAttributeValueID { get; set; }
+        public int ProductVariantValueID { get; set; }
         public bool Enabled { get; set; }
         public int Inventory { get; set; }
 

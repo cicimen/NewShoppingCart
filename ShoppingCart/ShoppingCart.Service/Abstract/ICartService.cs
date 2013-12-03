@@ -8,6 +8,7 @@ namespace ShoppingCart.Service
     public interface ICartService
     {
         IQueryable<Cart> Carts();
+        CartService GetCart(HttpContextBase context);
         void AddToCart(Product product);
         void AddToCart(Product product, int itemCount, string variationXml);
         int RemoveFromCart(int id);

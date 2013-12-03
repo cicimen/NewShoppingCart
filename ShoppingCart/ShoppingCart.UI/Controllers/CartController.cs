@@ -30,7 +30,7 @@ namespace ShoppingCart.UI.Controllers
             //var cart = Carts.ge EFCartRepository.GetCart(this.HttpContext);
             var viewModel = new ShoppingCartViewModel
             {
-                CartItems = Carts.GetCartItems(),
+                CartItems = Carts.GetCart(this.HttpContext).GetCartItems(),
                 CartTotal = Carts.GetTotal()
             };
             return View(viewModel);
@@ -56,7 +56,7 @@ namespace ShoppingCart.UI.Controllers
             // Retrieve the album from the database
             var product = Products.GetBy(Languages.GetLanguage(),productID);
             // Add it to the shopping cart
-            Carts.AddToCart(product, count, CodeHelpers.CreateXmlForAttribute(productAttributeValueID));
+            Carts.GetCart(this.HttpContext).AddToCart(product, count, CodeHelpers.CreateXmlForAttribute(productAttributeValueID));
             // Go back to the main store page for more shopping
             return RedirectToAction("Index");
         }
@@ -66,16 +66,16 @@ namespace ShoppingCart.UI.Controllers
         {
             string languageCode = Languages.GetLanguage().LanguageCode;
             // Get the name of the album to display confirmation
-            string productName = Carts.Carts().SingleOrDefault(x => x.RecordId == id).Product.ProductTranslations.
+            string productName = Carts.GetCart(this.HttpContext).Carts().SingleOrDefault(x => x.RecordId == id).Product.ProductTranslations.
                 FirstOrDefault(x=> x.Language.LanguageCode == languageCode).ProductName;
             // Remove from cart
-            int itemCount = Carts.RemoveFromCart(id);
+            int itemCount = Carts.GetCart(this.HttpContext).RemoveFromCart(id);
             // Display the confirmation message
             var results = new ShoppingCartRemoveViewModel
             {
                 Message = Server.HtmlEncode(productName) + languageCode == "en" ? " has been removed from your shopping cart." : "sepetten çıkarıldı.",
-                CartTotal = Carts.GetTotal(),
-                CartCount = Carts.GetCount(),
+                CartTotal = Carts.GetCart(this.HttpContext).GetTotal(),
+                CartCount = Carts.GetCart(this.HttpContext).GetCount(),
                 ItemCount = itemCount,
                 DeleteId = id
             };
@@ -87,7 +87,7 @@ namespace ShoppingCart.UI.Controllers
         [ChildActionOnly]
         public ActionResult CartSummary()
         {
-            ViewData["CartCount"] = Carts.GetCount();
+            ViewData["CartCount"] = Carts.GetCart(this.HttpContext).GetCount();
             return PartialView("CartSummary");
         }
 

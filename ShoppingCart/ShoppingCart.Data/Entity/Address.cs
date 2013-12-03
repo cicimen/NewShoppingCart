@@ -36,7 +36,7 @@ namespace ShoppingCart.Data.Entity
         [ForeignKey("CityID")]
         public City City { get; set; }
 
-        [ForeignKey("ApplicationUserId")]
+        [ForeignKey("ApplicationUserID")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 
     }
