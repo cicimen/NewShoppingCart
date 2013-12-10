@@ -24,7 +24,8 @@ namespace ShoppingCart.Data.Concrete
         ///</summary>
         public IEnumerable<Address> GetFor(ApplicationUser user)
         {
-            return user.Addresses.OrderByDescending(a => a.DateCreated);
+            return All().Include(a => a.City).Where(a => a.ApplicationUserID == user.Id).OrderByDescending(a => a.DateCreated);
+            //return user.Addresses.OrderByDescending(a => a.DateCreated);
         }
 
         ///<summary>
@@ -34,10 +35,11 @@ namespace ShoppingCart.Data.Concrete
         {
             user.Addresses.Add(address);
 
-            if (!ShareContext)
-            {
-                Context.SaveChanges();
-            }
+            //Context.SaveChanges();
+            //if (!ShareContext)
+            //{
+            //    Context.SaveChanges();
+            //}
         }
 
         ///<summary>

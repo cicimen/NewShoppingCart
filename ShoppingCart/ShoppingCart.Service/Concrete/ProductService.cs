@@ -31,11 +31,11 @@ namespace ShoppingCart.Service
         {
             if(string.IsNullOrWhiteSpace(categoryURLText))
             {
-                return _products.All(language, true, false, true, false, false, false);
+                return _products.All(language).OrderBy(p=>p.ProductURLText).Skip(skip).Take(take);
             }
-            List<string> categoryURLTexts= _context.Categories.GetBy(language, categoryURLText,false,false,true,false).Offspring.Select(o=> o.Offspring.CategoryURLText).ToList();
+            List<string> categoryURLTexts= _context.Categories.GetBy(language, categoryURLText).Offspring.Select(o=> o.Offspring.CategoryURLText).ToList();
             categoryURLTexts.Add(categoryURLText);
-            return _products.GetByCategory(language, categoryURLTexts, true, false, true,false,false,false);
+            return _products.GetByCategory(language, categoryURLTexts).OrderBy(p => p.ProductURLText).Skip(skip).Take(take);
         }
 
         public int GetCountByCategoryForHome(Language language, string categoryURLText)
@@ -44,7 +44,7 @@ namespace ShoppingCart.Service
             {
                 return _products.Count(null) ;
             }
-            List<string> categoryURLTexts = _context.Categories.GetBy(language, categoryURLText, false, false, true, false).Offspring.Select(o => o.Offspring.CategoryURLText).ToList();
+            List<string> categoryURLTexts = _context.Categories.GetBy(language, categoryURLText).Offspring.Select(o => o.Offspring.CategoryURLText).ToList();
             categoryURLTexts.Add(categoryURLText);
             return _products.Count(p=>p.Category.CategoryURLText == categoryURLText);
         }

@@ -45,7 +45,8 @@ namespace ShoppingCart.Data.Concrete
             var query = DbSet.AsQueryable();
 
             if (includeCategoryTranslations)
-                query = DbSet.Include(c => c.CategoryTranslations.Select(ct => ct.Language == language));
+                //query = DbSet.Include(c => c.CategoryTranslations.Select(ct => ct.Language == language));
+                query = DbSet.Include(c => c.CategoryTranslations);
             if (includeAncestors)
                 query = DbSet.Include(c => c.Ancestors);
             if (includeOffspring)

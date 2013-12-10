@@ -28,7 +28,7 @@ namespace ShoppingCart.Data.Entity
         public string Phone { get; set; }
         [MaxLength(30)]
         public string PhoneMobile { get; set; }
-        public DateTime DateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
         public int CityID { get; set; }
         public string ApplicationUserID { get; set; }
 

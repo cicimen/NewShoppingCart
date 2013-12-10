@@ -89,6 +89,12 @@ namespace ShoppingCart.Data.Entity
             set { _relatedProducts = value; }
         }
 
+        //public virtual ICollection<ProductRelation> RelatedToProducts
+        //{
+        //    get { return _relatedToProducts ?? (_relatedToProducts = new Collection<ProductRelation>()); }
+        //    set { _relatedToProducts = value; }
+        //}
+
         
         private ICollection<ProductImage> _productImages;
         private ICollection<ProductAttributeValue> _productAttributeValues;
@@ -96,6 +102,7 @@ namespace ShoppingCart.Data.Entity
         private ICollection<ProductTranslation> _productTranslations;
         private ICollection<ProductComment> _productComments;
         private ICollection<ProductRelation> _relatedProducts;
+        //private ICollection<ProductRelation> _relatedToProducts;
 
 
     }

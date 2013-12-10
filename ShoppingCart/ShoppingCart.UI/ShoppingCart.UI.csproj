@@ -212,6 +212,9 @@
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\la_boutique\core.css" />
+    <Content Include="Content\la_boutique\custom.css" />
+    <Content Include="Content\la_boutique\midnightblue.css" />
     <Content Include="Content\orijinal-bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\Flags\tr.gif" />
@@ -285,6 +288,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="img\preloader.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
@@ -298,13 +302,22 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\la_boutique\imagesloaded.js" />
+    <Content Include="Scripts\la_boutique\jquery.easing-1.3.min.js" />
+    <Content Include="Scripts\la_boutique\jquery.elevatezoom.js" />
+    <Content Include="Scripts\la_boutique\jquery.flexslider.js" />
+    <Content Include="Scripts\la_boutique\jquery.isotope.min.js" />
+    <Content Include="Scripts\la_boutique\jquery.sharrre-1.3.4.js" />
+    <Content Include="Scripts\la_boutique\la_boutique.js" />
     <Content Include="Scripts\masonry.pkgd.js" />
     <Content Include="Scripts\masonry.pkgd.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -338,6 +351,7 @@
     <Content Include="Views\Address\Index.cshtml" />
     <Content Include="Views\Address\Create.cshtml" />
     <Content Include="Views\Address\_AddressTable.cshtml" />
+    <Content Include="Views\Address\_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

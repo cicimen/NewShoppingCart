@@ -14,7 +14,7 @@ namespace ShoppingCart.Data.Entity
         [MaxLength(100)]
         public string Surname { get; set; }
         public DateTime? BirthDate { get; set; }
-        public DateTime DateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
 
 
         private ICollection<Address> _addresses;

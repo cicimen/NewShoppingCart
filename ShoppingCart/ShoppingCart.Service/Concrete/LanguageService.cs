@@ -21,7 +21,18 @@ namespace ShoppingCart.Service
 
         public Language GetLanguage()
         {
-            Language language = _context.Languages.Find(l => l.LanguageCode == _session[_languageSessionKey].ToString());
+            Language language;
+            string languageCode = "";
+            if (_session[_languageSessionKey] != null)
+            {
+                languageCode = _session[_languageSessionKey].ToString();
+                language = _context.Languages.Find(l => l.LanguageCode == languageCode);
+            }
+            else
+            {
+                language = _context.Languages.Find(l => l.Default == true);
+            }
+            
             if(language == null)
             {
                 language = _context.Languages.Find(l => l.Default == true);

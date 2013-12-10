@@ -1,0 +1,104 @@
+﻿@model AddressViewModel
+
+@{
+    Layout = null;
+}
+<div id="create-dialog-modal" title="Basic modal dialog" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Create Address</h4>
+            </div>
+            <div class="modal-body">
+                @*@using (Html.BeginForm("Create", "Address", FormMethod.Post))*@
+                @using (Ajax.BeginForm("Create", "Address", null, new AjaxOptions { UpdateTargetId = "addressTable", OnSuccess = "onSuccess" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @*<h4>Address</h4>
+                    <hr />*@
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AddressDescription, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.AddressDescription)
+                                @Html.ValidationMessageFor(model => model.AddressDescription)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NameSurname, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.NameSurname)
+                                @Html.ValidationMessageFor(model => model.NameSurname)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CityID, "City", new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.DropDownList("CityID", String.Empty)
+                                @Html.ValidationMessageFor(model => model.CityID)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AddressLine1, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.TextAreaFor(model => model.AddressLine1)
+                                @Html.ValidationMessageFor(model => model.AddressLine1)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AddressLine2, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.TextAreaFor(model => model.AddressLine2)
+                                @Html.ValidationMessageFor(model => model.AddressLine2)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PostalCode, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.PostalCode)
+                                @Html.ValidationMessageFor(model => model.PostalCode)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.Phone)
+                                @Html.ValidationMessageFor(model => model.Phone)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PhoneMobile, new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(model => model.PhoneMobile)
+                                @Html.ValidationMessageFor(model => model.PhoneMobile)
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" data-dismiss="modal" class="btn">Close</a>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            </div>
+    </div>
+</div>
+
+

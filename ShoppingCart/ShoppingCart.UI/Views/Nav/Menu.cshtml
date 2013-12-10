@@ -1,51 +1,58 @@
 ﻿@model IEnumerable<ShoppingCart.Data.Entity.Category>
 
-<div class="panel panel-primary well">
-    <ul class="list-group nav">
+<div class="widget Categories">
+    @*<h3 class="widget-title widget-title ">​Categories​</h3>​*@
+    <ul>
         @foreach (var category in Model)
         {
-            <li class="list-group-item-heading nav-header disabled">
-                <h3>
-                    @Html.RouteLink(category.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
+            <li>
+            @Html.RouteLink(category.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
             new
             {
                 controller = "Home",
                 action = "Index",
-                categoryLinkText = category.CategoryURLText,
+                categoryURLText = category.CategoryURLText,
                 page = 1
-            })
-                </h3>
-            </li>         
-            foreach (var childCategory in category.Children)
+            }, new { @class = "title" })
+         
+            @if (category.Children.Count > 0)
             {
-                <li>
-                    <h4>
-                        @Html.RouteLink(childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
-                new
-                {
-                    controller = "Home",
-                    action = "Index",
-                    categoryLinkText = childCategory.CategoryURLText,
-                    page = 1
-                })
-                    </h4>
-                </li>  
-                foreach (var grandChildCategory in childCategory.Children)
-                {
-                    <li>
-                        <h5>
-                            @Html.RouteLink(grandChildCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
-                    new
+                <ul>
+                    @foreach (var childCategory in category.Children)
                     {
-                        controller = "Home",
-                        action = "Index",
-                        categoryLinkText = grandChildCategory.CategoryURLText,
-                        page = 1
-                    })
-                        </h5>
-                    </li> 
-                }           
+                        <li>
+
+                            @Html.RouteLink(childCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
+                                                            new
+                                                            {
+                                                                controller = "Home",
+                                                                action = "Index",
+                                                                categoryURLText = childCategory.CategoryURLText,
+                                                                page = 1
+                                                            }, new { @class="title"})
+                            @if (childCategory.Children.Count > 0)
+                            {
+                                <ul>
+                                    @foreach (var grandChildCategory in childCategory.Children)
+                                    {
+                                        <li>
+                                            @Html.RouteLink(grandChildCategory.CategoryTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).CategoryName,
+                                                                                                new
+                                                                                                {
+                                                                                                    controller = "Home",
+                                                                                                    action = "Index",
+                                                                                                    categoryURLText = grandChildCategory.CategoryURLText,
+                                                                                                    page = 1
+                                                                                                }, new { @class = "title" })
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            </li>
+                    }
+                </ul>
             }
+            </li>
         }
-    </ul>
+        </ul>
 </div>

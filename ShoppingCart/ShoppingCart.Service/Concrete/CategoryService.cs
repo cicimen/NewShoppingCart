@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using ShoppingCart.Data.Entity;
 
+using System.Linq;
+
 namespace ShoppingCart.Service
 {
     public class CategoryService : ICategoryService
@@ -17,7 +19,7 @@ namespace ShoppingCart.Service
 
         public IEnumerable<Category> GetAllRoot(Language language)
         {
-            return _categories.All(language, true, false, false, true);
+            return _categories.All(language, true, false, false, true).Where(c=>c.Parent == null);
         }
     }
 }

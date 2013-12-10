@@ -82,7 +82,9 @@ namespace ShoppingCart.Data.Concrete
                     .Include(p => p.ProductVariants.Select(pv => pv.ProductVariantValues.Select(pvv => pvv.ProductVariantValueTranslations == language)));
 
             if (includeProductTranslations)
-                query = DbSet.Include(p => p.ProductTranslations.Select(pt=> pt.Language == language));
+                //query = DbSet.Include(p => p.ProductTranslations.Select(pt=> pt.Language == language));
+                //query = DbSet.Include(p => p.ProductTranslations.Where(pt => pt.Language == language));
+                query = DbSet.Include(p => p.ProductTranslations);//.Select(pt => pt.Language == language));
 
             if (includeProductComments)
                 query = DbSet.Include(p => p.ProductComments);

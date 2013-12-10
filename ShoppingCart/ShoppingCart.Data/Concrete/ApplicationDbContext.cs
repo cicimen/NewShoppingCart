@@ -17,18 +17,24 @@ namespace ShoppingCart.Data.Concrete
 
             modelBuilder.Configurations.Add(new CategoryConfiguration());
             modelBuilder.Configurations.Add(new CategoryNodeConfiguration());
-            modelBuilder.Configurations.Add(new ProductRelationConfiguration());
+            //modelBuilder.Configurations.Add(new ProductRelationConfiguration());
+
+            //modelBuilder.Entity<Product>()
+            //    .HasMany(p => p.RelatedProducts)
+            //    .WithRequired(p=>p.Product)
+            //    .HasForeignKey(p=>p.ProductID);
 
             modelBuilder.Entity<Product>()
                 .HasMany(p => p.RelatedProducts)
-                .WithMany()
-                .Map(m =>
-                {
+                .WithRequired(p => p.RelatedProduct)
+                .HasForeignKey(p => p.RelatedProductID)
+                .WillCascadeOnDelete(false);
 
-                    m.MapLeftKey("ProductID");
-                    m.MapRightKey("RelatedProductID");
-                    m.ToTable("ProductRelation");
-                });
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.RelatedProducts)
+                .WithRequired(p => p.Product)
+                .HasForeignKey(p => p.ProductID)
+                .WillCascadeOnDelete(false);
 
         }
         public DbSet<Address> Addresses { get; set; }
@@ -84,11 +90,11 @@ namespace ShoppingCart.Data.Concrete
         }
     }
 
-    public class ProductRelationConfiguration : EntityTypeConfiguration<ProductRelation>
-    {
-        public ProductRelationConfiguration()
-        {
-            HasKey(p => new { p.ProductID, p.RelatedProductID});
-        }
-    }
+    //public class ProductRelationConfiguration : EntityTypeConfiguration<ProductRelation>
+    //{
+    //    public ProductRelationConfiguration()
+    //    {
+    //        HasKey(p => new { p.ProductID, p.RelatedProductID});
+    //    }
+    //}
 }
