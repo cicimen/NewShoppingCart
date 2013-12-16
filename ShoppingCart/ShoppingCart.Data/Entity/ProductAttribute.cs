@@ -10,14 +10,15 @@ namespace ShoppingCart.Data.Entity
     {
         public int ProductAttributeID { get; set; }
 
-        public int ProductAttributeDisplayOrder { get; set; }
-
-        private ICollection<ProductAttributeTranslation> _productAttributeTranslations;
+        public int ProductAttributeDisplayOrder { get; set; }       
 
         public virtual ICollection<ProductAttributeTranslation> ProductAttributeTranslations
         {
             get { return _productAttributeTranslations ?? (_productAttributeTranslations = new Collection<ProductAttributeTranslation>()); }
             set { _productAttributeTranslations = value; }
         }
+
+
+        private ICollection<ProductAttributeTranslation> _productAttributeTranslations;  
     }
 }

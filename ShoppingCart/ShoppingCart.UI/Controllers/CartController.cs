@@ -10,6 +10,8 @@ using ShoppingCart.Data.Concrete;
 using ShoppingCart.UI.Models;
 using ShoppingCart.UI.Helpers;
 
+using ShoppingCart.Service.ViewModel;
+
 namespace ShoppingCart.UI.Controllers
 {
     public class CartController : ShoppingCartControllerBase
@@ -31,7 +33,8 @@ namespace ShoppingCart.UI.Controllers
             var viewModel = new ShoppingCartViewModel
             {
                 CartItems = Carts.GetCart(this.HttpContext).GetCartItems(),
-                CartTotal = Carts.GetTotal()
+                CartTotal = Carts.GetTotal(),
+                CartCount = Carts.GetCount()
             };
             return View(viewModel);
         }
@@ -62,7 +65,7 @@ namespace ShoppingCart.UI.Controllers
         }
 
         
-        public ActionResult RemoveFromCart(int id)
+        public JsonResult RemoveFromCart(int id)
         {
             string languageCode = Languages.GetLanguage().LanguageCode;
             // Get the name of the album to display confirmation
@@ -80,6 +83,28 @@ namespace ShoppingCart.UI.Controllers
                 DeleteId = id
             };
             return Json(results);
+        }
+
+        [HttpPost]
+        public JsonResult UpdateCart(List<UpdateCartViewModel> updateCartViewModels)
+        {
+            foreach (UpdateCartViewModel model in updateCartViewModels)
+            {
+                var cartItem = Carts.GetCart(this.HttpContext).Carts().SingleOrDefault(x => x.RecordId == model.RecordID);
+                if(cartItem!= null)
+                {
+                    int itemCount = Carts.GetCart(this.HttpContext).UpdateCartItem(model.RecordID, model.Count);
+                }
+            }
+
+            var viewModel = new ShoppingCartViewModel
+            {
+                CartItems = Carts.GetCart(this.HttpContext).GetCartItems(),
+                CartTotal = Carts.GetTotal(),
+                CartCount =Carts.GetCount()
+            };
+            var result = new { Success = "True"};
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         //

@@ -7,10 +7,11 @@ using System.Web.Mvc;
 //sil sonra
 using System.Data.Entity;
 using ShoppingCart.Data.Entity;
+using ShoppingCart.Service.ViewModel;
 
 //using ShoppingCart.Domain.Abstract;
 //using ShoppingCart.Domain.Entities;
-using ShoppingCart.UI.Models;
+//using ShoppingCart.UI.Models;
 
 namespace ShoppingCart.UI.Controllers
 {
@@ -27,18 +28,20 @@ namespace ShoppingCart.UI.Controllers
         //}
 
         public ActionResult Index(string categoryURLText , int page =1)
-        {          
-            ProductsListViewModel model = new ProductsListViewModel
-            {
-                Products = Products.GetByCategoryForHome(Languages.GetLanguage(), categoryURLText, (page - 1) * PageSize, PageSize),
-                PagingInfo = new PagingInfo
-                {
-                    CurrentPage = page,
-                    ItemsPerPage = PageSize,
-                    TotalItems = Products.GetCountByCategoryForHome(Languages.GetLanguage(),categoryURLText)
-                },
-                CurrentCategory = categoryURLText
-            };
+        {
+            var model = Products.GetProductListViewModel(Languages.GetLanguage(), categoryURLText, page, PageSize);
+
+            //ProductsListViewModel model = new ProductsListViewModel
+            //{
+            //    Products = Products.GetByCategoryForHome(Languages.GetLanguage(), categoryURLText, (page - 1) * PageSize, PageSize),
+            //    PagingInfo = new PagingInfo
+            //    {
+            //        CurrentPage = page,
+            //        ItemsPerPage = PageSize,
+            //        TotalItems = Products.GetCountByCategoryForHome(Languages.GetLanguage(),categoryURLText)
+            //    },
+            //    CurrentCategory = categoryURLText
+            //};
 
             return View(model);
         }

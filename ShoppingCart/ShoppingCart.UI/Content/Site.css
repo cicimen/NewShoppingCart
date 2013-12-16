@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 70px;
+    /*padding-top: 70px;*/
     padding-bottom: 20px;
 }
 
@@ -105,7 +105,8 @@ div.col-md-4
 
 .navbar-inverse 
 {
-background-color: #dcd7d7;
+/*background-color: #dcd7d7;*/
+background-color:#ffffff;
 border-color: #dcd7d7;
 }
 

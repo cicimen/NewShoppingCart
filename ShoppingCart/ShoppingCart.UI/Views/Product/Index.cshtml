@@ -1,6 +1,6 @@
-﻿@model ShoppingCart.Data.Entity.Product
+﻿@model ShoppingCart.Service.ViewModel.ProductViewModel
 @{
-    ViewBag.Title = Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductName;
+    ViewBag.Title = Model.ProductName;
 }
 
 
@@ -18,9 +18,9 @@
                         new {item.ProductImageID})" />
 }
 
-@Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductName
+@Model.ProductName
 <hr />
-@Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductDescription
+@Model.ProductDescription
 <hr />
 
 
@@ -28,12 +28,23 @@
 {
     @Html.Hidden("ProductID",Model.ProductID)
     
-    if (ViewBag.ProductVariantValueID != null)
+    @*if (ViewBag.ProductVariantValueID != null)
     {
         @Html.DropDownList("ProductVariantValueID", null, new { }) <br /> <br />
+    }*@
+
+    foreach (var item in Model.ProductVariants)
+    {
+        if(item.ProductVariantValues!= null &&  item.ProductVariantValues.Count>0)
+        {
+            @Html.DropDownList("ProductVariantValueID", new SelectList(item.ProductVariantValues, "ProductVariantValueID", "ProductVariantValueName"),
+            item.ProductVariantName)<br /> <br />
+        }
     }
 
-    @Html.TextBox("Count", 1, new { type = "number", min = "0", max = (int) ViewBag.ProductInventory })
+
+
+    @Html.TextBox("Count", 1, new { type = "number", min = "1", max = (int) ViewBag.ProductInventory })
    
     <p>
             <input type="submit" value="Add To Cart" />

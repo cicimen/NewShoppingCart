@@ -8,5 +8,6 @@ namespace ShoppingCart.UI.Models
     {
         public List<Cart> CartItems { get; set; }
         public decimal CartTotal { get; set; }
+        public int CartCount { get; set; }
     }
 }

@@ -24,17 +24,23 @@ namespace ShoppingCart.Data.Concrete
             //    .WithRequired(p=>p.Product)
             //    .HasForeignKey(p=>p.ProductID);
 
-            modelBuilder.Entity<Product>()
-                .HasMany(p => p.RelatedProducts)
-                .WithRequired(p => p.RelatedProduct)
-                .HasForeignKey(p => p.RelatedProductID)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Product>().
+             HasMany(c => c.RelatedProducts).WithRequired(c => c.Product).HasForeignKey(c=>c.ProductID).WillCascadeOnDelete(false);
+            modelBuilder.Entity<ProductRelation>().
+                HasRequired(c => c.RelatedProduct).WithMany().HasForeignKey(c=>c.RelatedProductID).WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Product>()
-                .HasMany(p => p.RelatedProducts)
-                .WithRequired(p => p.Product)
-                .HasForeignKey(p => p.ProductID)
-                .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Product>()
+            //    .HasMany(p => p.RelatedProducts)
+            //    .WithRequired(p => p.RelatedProduct)
+            //    .HasForeignKey(p => p.RelatedProductID)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Product>()
+            //    .HasMany(p => p.RelatedProducts)
+            //    .WithRequired(p => p.Product)
+            //    .HasForeignKey(p => p.ProductID)
+            //    .WillCascadeOnDelete(false);
 
         }
         public DbSet<Address> Addresses { get; set; }

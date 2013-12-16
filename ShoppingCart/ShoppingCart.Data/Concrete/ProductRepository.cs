@@ -78,8 +78,7 @@ namespace ShoppingCart.Data.Concrete
                 query = DbSet.Include(p => p.ProductImages);
 
             if (includeProductVariants)
-                query = DbSet.Include(p => p.ProductVariants.Select(pv => pv.ProductVariantTranslations.Select(x => x.Language == language)))
-                    .Include(p => p.ProductVariants.Select(pv => pv.ProductVariantValues.Select(pvv => pvv.ProductVariantValueTranslations == language)));
+                query = DbSet.Include(p => p.ProductVariants);
 
             if (includeProductTranslations)
                 //query = DbSet.Include(p => p.ProductTranslations.Select(pt=> pt.Language == language));
@@ -93,7 +92,7 @@ namespace ShoppingCart.Data.Concrete
                 query = DbSet.Include(p => p.RelatedProducts);
 
             if(includeProductAttributeValues)
-                query = DbSet.Include(p => p.ProductAttributeValues.Select(pav => pav.ProductAttributeValueTranslations.Select(pavt=>pavt.Language ==language)));
+                query = DbSet.Include(p => p.ProductAttributeValues);
 
 
             return query;

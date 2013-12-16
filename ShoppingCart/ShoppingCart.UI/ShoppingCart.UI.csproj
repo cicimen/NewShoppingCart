@@ -214,6 +214,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\la_boutique\core.css" />
     <Content Include="Content\la_boutique\custom.css" />
+    <Content Include="Content\la_boutique\fonts\font-awesome.css" />
+    <Content Include="Content\la_boutique\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\la_boutique\midnightblue.css" />
     <Content Include="Content\orijinal-bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -288,9 +290,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="img\glyphicons-halflings.png" />
     <Content Include="img\preloader.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\la_boutique\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\la_boutique\fonts\fontawesome-webfont_2d2816fe.eot" />
+    <Content Include="Content\la_boutique\fonts\fontawesome-webfont_51500cb8.eot" />
+    <Content Include="Content\la_boutique\fonts\fontawesome-webfont_51500cb8.ttf" />
+    <Content Include="Content\la_boutique\fonts\fontawesome-webfont_51500cb8.woff" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
@@ -352,6 +360,7 @@
     <Content Include="Views\Address\Create.cshtml" />
     <Content Include="Views\Address\_AddressTable.cshtml" />
     <Content Include="Views\Address\_Edit.cshtml" />
+    <Content Include="Views\Cart\_CartTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

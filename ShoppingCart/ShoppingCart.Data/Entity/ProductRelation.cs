@@ -14,11 +14,11 @@ namespace ShoppingCart.Data.Entity
 
         //[ForeignKey("ProductID")]
         //[InverseProperty("RelatedProducts")]
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
-        [ForeignKey("RelatedProductID")]
+        //[ForeignKey("RelatedProductID")]
         //[Column("RelatedProductID")]
-        public Product RelatedProduct { get; set; }
+        public virtual Product RelatedProduct { get; set; }
         
         
        

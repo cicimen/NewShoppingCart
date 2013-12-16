@@ -1,0 +1,42 @@
+﻿@model ShoppingCart.UI.Models.ShoppingCartViewModel
+
+@foreach (var item in Model.CartItems)
+{
+    <tr id="row-@item.RecordId">
+        <td class="col_product text-left">
+            <div class="image visible-desktop">
+                <a href="@Url.Action("Index", "Product", new { productURLText = item.Product.ProductURLText })">
+                    <img class="img-responsive" src="@Url.Action("GetImageThumbnail", "Image",
+                                        new { productImageID = item.Product.ProductImages.OrderByDescending(x => x.DisplayOrder).First().ProductImageID })"
+                         alt="Helen Romper" />
+                </a>
+            </div>
+            <h5>
+                @Html.ActionLink(item.Product.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductName,
+                                                "Index", "Product", new { productURLText = item.Product.ProductURLText }, null)
+                @if (item.VariationXml != null)
+                {
+                    @Html.GetProductVariantAndValueFromXml(item.VariationXml)
+                }
+            </h5>
+        </td>
+        <td class="col_remove text-right">
+            <a href="#" class="RemoveLink" data-id="@item.RecordId">
+                <i class="icon-trash icon-large"></i>
+            </a>
+        </td>
+
+        <td class="col_qty text-right">
+            <input type="number" max="10" min="1" name="item_quantity[]" value="@item.Count" class="itemCount" id="@item.RecordId" />
+        </td>
+
+
+        <td class="col_discount text-right">
+            <span class="discount">@item.Product.DiscountedPrice</span>
+        </td>
+        <td class="col_total text-right">
+            <span class="total-price">@( item.Product.DiscountedPrice * item.Count)</span>
+        </td>
+    </tr>
+}
+

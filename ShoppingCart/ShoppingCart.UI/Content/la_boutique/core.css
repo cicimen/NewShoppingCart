@@ -2077,10 +2077,10 @@ textarea {
 .product-list li {
   list-style: none;
   /*egemen*/
-  width: 200px;
+  width: 270px;
   float: left;
-  margin-left: 22px;
-  margin-bottom: 22px;
+  margin-left: 30px;
+  margin-bottom: 30px;
     /*egemen*/
 }
 
@@ -4047,3 +4047,10 @@ html[xmlns] .slides {
     padding-top: 0;
   }
 }
+
+
+/*egemen*/
+.category-menu {
+    margin-left: 30px;
+}
+/*egemen*/

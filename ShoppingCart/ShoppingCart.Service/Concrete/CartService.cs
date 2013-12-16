@@ -94,19 +94,25 @@ namespace ShoppingCart.Service
             int itemCount = 0;
             if (cartItem != null)
             {
-                if (cartItem.Count > 1)
-                {
-                    cartItem.Count--;
-                    itemCount = cartItem.Count;
-                }
-                else
-                {
-                    _carts.Delete(cartItem);
-                }
+                _carts.Delete(cartItem);
                 // Save changes
                 _context.SaveChanges();
             }
             return itemCount;
+        }
+
+        public int UpdateCartItem(int recordID,int count)
+        {
+            // Get the cart
+            var cartItem = _carts.Find(cart => cart.CartId == _shoppingCartID && cart.RecordId == recordID);
+            if (cartItem != null)
+            {
+                cartItem.Count = count;
+                _carts.Update(cartItem);
+                // Save changes
+                _context.SaveChanges();
+            }
+            return recordID;
         }
 
         public void EmptyCart()

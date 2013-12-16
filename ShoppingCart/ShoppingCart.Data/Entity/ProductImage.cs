@@ -18,6 +18,8 @@ namespace ShoppingCart.Data.Entity
 
         public string ProductImageMimeType { get; set; }
 
+        public string ProductImageAltText { get; set; }
+
         public short DisplayOrder { get; set; }
 
         public virtual Product Product { get; set; }

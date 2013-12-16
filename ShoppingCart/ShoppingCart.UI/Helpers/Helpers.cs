@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Web.Mvc;
-using ShoppingCart.UI.Models;
 using System.Web;
 using System.Xml.Linq;
 using System.Xml;
@@ -10,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ShoppingCart.Data.Concrete;
 using ShoppingCart.Data.Entity;
+using ShoppingCart.Service.ViewModel;
 
 namespace ShoppingCart.UI.Helpers
 {

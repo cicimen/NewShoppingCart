@@ -1,14 +1,16 @@
-﻿@model ShoppingCart.Data.Entity.Product
+﻿@model ShoppingCart.Service.ViewModel.ProductViewModel
 
 <li class="standard" data-price="@Model.DiscountedPrice.ToString("c")">
     <a href="@Url.Action("Index", "Product", new { productURLText = Model.ProductURLText })" title="Lisette Dress">
         <div class="image">
             <img class="primary" src="@Url.Action("GetImage", "Image",
                         new {productImageID= Model.ProductImages.OrderByDescending(x=>x.DisplayOrder).First().ProductImageID })" alt="Lisette Dress" />
-            @if (Model.ProductImages.Count > 1)
+                        @if (Model.ProductImages.Count > 1)
             {
-                <img class="secondary" src="@Url.Action("GetImage", "Image",
-                        new {productImageID= Model.ProductImages.OrderByDescending(x=>x.DisplayOrder).Skip(1).First().ProductImageID })" alt="Lisette Dress" />
+                <img class="secondary" src=
+                     "@Url.Action("GetImage", "Image", new {productImageID= Model.ProductImages.OrderByDescending(x=>x.DisplayOrder).
+                      Skip(1).First().ProductImageID }) " alt="lisette dress" />
+
             }          
         </div>
 
@@ -16,7 +18,7 @@
             <div class="prices">
                 <span class="price">@Model.DiscountedPrice.ToString("c")</span>
             </div>
-            <h3>@Model.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductName</h3>
+            <h3>@Model.ProductName</h3>
         </div>
 
     </a>

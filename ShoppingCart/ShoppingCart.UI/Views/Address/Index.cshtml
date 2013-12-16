@@ -30,8 +30,7 @@
 
             $("#create-modal-opener").click(function () {
                 $("#create-dialog-modal").load('@Url.Action("Create","Address",null)', function (result)
-                {
-                 
+                {                
                     $("#create-dialog-modal").modal({ show: true });
                     $.validator.unobtrusive.parse(this);
                 });              

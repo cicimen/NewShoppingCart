@@ -73,7 +73,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AddressViewModel.cs" />
     <Compile Include="ViewModel\CityViewModel.cs" />
+    <Compile Include="ViewModel\PagingInfo.cs" />
+    <Compile Include="ViewModel\ProductAttributeViewModel.cs" />
+    <Compile Include="ViewModel\ProductsListViewModel.cs" />
+    <Compile Include="ViewModel\ProductVariantValueViewModel.cs" />
+    <Compile Include="ViewModel\ProductVariantViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\UpdateCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,5 +1,5 @@
 ﻿@*@model IList<ShoppingCart.Domain.Entities.Product>*@
-@model ShoppingCart.UI.Models.ProductsListViewModel
+@model ShoppingCart.Service.ViewModel.ProductsListViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-2 col-md-2">
+                <div class="col-lg-2 col-md-2 ">
                     <!-- Sidebar -->
                     <aside class="sidebar">
                         @{ Html.RenderAction("Menu", "Nav"); }

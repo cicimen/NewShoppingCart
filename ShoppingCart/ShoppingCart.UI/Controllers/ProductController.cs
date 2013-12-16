@@ -8,6 +8,7 @@ using ShoppingCart.Data.Abstract;
 using ShoppingCart.Data.Entity;
 using ShoppingCart.UI.Models;
 
+using ShoppingCart.Service.ViewModel;
 using ShoppingCart.UI.Helpers;
 
 namespace ShoppingCart.UI.Controllers
@@ -23,7 +24,6 @@ namespace ShoppingCart.UI.Controllers
 
         public ActionResult Index(string productURLText)
         {
-            int productInventory = 0;
             if(string.IsNullOrWhiteSpace(productURLText))
             {
                 return RedirectToAction("Index", "Home", new{page =1});
@@ -34,23 +34,20 @@ namespace ShoppingCart.UI.Controllers
             {
                 return RedirectToAction("Index", "Home", new { page = 1 });
             }
-            ProductVariant firstProductVariant = product.ProductVariants.FirstOrDefault();
+            int productInventory = 0;
+            ProductVariantViewModel firstProductVariant = product.ProductVariants.FirstOrDefault();
             if (firstProductVariant == null)
             {
                 productInventory = product.Inventory;
             }
             else
             {
-                List<ProductVariantValue> firstProductVariantValues = firstProductVariant.ProductVariantValues.ToList();
-                List<ProductVariantValueTranslation> firstProductVariantValueTranslations = new List<ProductVariantValueTranslation>();
+                List<ProductVariantValueViewModel> firstProductVariantValues = firstProductVariant.ProductVariantValues.ToList();
 
-                foreach (ProductVariantValue productVariantValue in firstProductVariantValues)
+                foreach (ProductVariantValueViewModel productVariantValue in firstProductVariantValues)
                 {
-                    firstProductVariantValueTranslations.Add(productVariantValue.ProductVariantValueTranslations
-                        .Where(x => x.Language.LanguageCode == CodeHelpers.GetLanguageCode()).First());
-                    productInventory += productVariantValue.Inventory;
+                    productInventory += productVariantValue.ProductVariantValueInventory;
                 }
-                ViewBag.ProductVariantValueID = new SelectList(firstProductVariantValueTranslations, "ProductVariantValueID", "ProductVariantValueName");
             }
             ViewBag.ProductInventory = productInventory>10 ? 10 : productInventory ;
             return View(product);
