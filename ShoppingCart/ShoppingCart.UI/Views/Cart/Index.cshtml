@@ -74,9 +74,11 @@
                             <button type="submit" class="btn btn-small mm20" id="UpdateCart">
                                 <i class="icon-undo"></i> &nbsp; Update cart
                             </button>
-                            <button type="submit" name="checkout" value="1" class="btn btn-primary btn-small mm20">
+                            @*<button type="submit" name="checkout" value="1" class="btn btn-primary btn-small mm20">
                                 Proceed to checkout &nbsp; <i class="icon-chevron-right"></i>
-                            </button>
+                            </button>*@
+                            <a class="btn btn-primary btn-small mm20"
+                               href="@Url.Action("Index", "Checkout")">Proceed to checkout&nbsp;<i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
 
