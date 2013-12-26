@@ -11,7 +11,7 @@ namespace ShoppingCart.Data.Entity
         [MaxLength(1000)]
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
-
+        public string ProductLongDescription { get; set; }
 
 
         public int LanguageID { get; set; }

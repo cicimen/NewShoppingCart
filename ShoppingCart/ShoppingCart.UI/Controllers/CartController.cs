@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using ShoppingCart.Data.Abstract;
 using ShoppingCart.Data.Entity;
 using ShoppingCart.Data.Concrete;
-using ShoppingCart.UI.Models;
+//using ShoppingCart.UI.Models;
 using ShoppingCart.UI.Helpers;
 
 using ShoppingCart.Service.ViewModel;

@@ -71,6 +71,7 @@
     <Compile Include="Abstract\ILanguageService.cs" />
     <Compile Include="Concrete\LanguageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="ViewModel\AddressViewModel.cs" />
     <Compile Include="ViewModel\CityViewModel.cs" />
     <Compile Include="ViewModel\PagingInfo.cs" />
@@ -79,6 +80,8 @@
     <Compile Include="ViewModel\ProductVariantValueViewModel.cs" />
     <Compile Include="ViewModel\ProductVariantViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\ShoppingCartRemoveViewModel.cs" />
+    <Compile Include="ViewModel\ShoppingCartViewModel.cs" />
     <Compile Include="ViewModel\UpdateCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

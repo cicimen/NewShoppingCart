@@ -24,6 +24,12 @@ namespace ShoppingCart.UI
            new { controller = "Nav", action = "ChangeLanguage" }
            );
 
+
+            routes.MapRoute(null,
+           "Checkout",
+           new { controller = "Checkout", action = "Index" }
+           );
+
             routes.MapRoute(null,
            "Cart",
            new { controller = "Cart", action = "Index" }

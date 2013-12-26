@@ -103,6 +103,7 @@
     <Compile Include="Entity\ProductTranslation.cs" />
     <Compile Include="Entity\ShippingMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShoppingCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

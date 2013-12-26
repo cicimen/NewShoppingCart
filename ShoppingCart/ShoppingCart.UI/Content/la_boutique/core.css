@@ -1369,9 +1369,16 @@ textarea {
   font-weight: 700;
   color: #ffffff;
 }
-.mini-cart {
+
+/*egemen*/
+/*.mini-cart {
   padding: 20px 0;
+}*/
+
+.mini-cart {
+  padding: 10px 0;
 }
+/*egemen*/
 @media (max-width: 767px) {
   .mini-cart {
     display: block;

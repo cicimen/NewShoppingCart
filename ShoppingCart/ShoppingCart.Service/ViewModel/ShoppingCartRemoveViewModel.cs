@@ -1,5 +1,5 @@
 ﻿
-namespace ShoppingCart.UI.Models
+namespace ShoppingCart.Service.ViewModel
 {
     public class ShoppingCartRemoveViewModel
     {

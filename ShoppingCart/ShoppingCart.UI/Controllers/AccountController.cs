@@ -9,7 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 
-using ShoppingCart.UI.Models;
+//using ShoppingCart.UI.Models;
+using ShoppingCart.Service.ViewModel;
 using ShoppingCart.Data.Concrete;
 using ShoppingCart.Data.Entity;
 using System.IO;

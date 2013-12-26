@@ -1,5 +1,10 @@
-﻿@Html.ActionLink("Cart (" + ViewData["CartCount"] + ")",
-"Index",
-"Cart",
-null,
-new { id = "cart-status" })
+﻿
+<div class="mini-cart">
+    <a href="@Url.Action("Index","Cart")"><span>@ViewData["CartCount"]</span></a>
+
+    @*@Html.ActionLink("Cart (" + ViewData["CartCount"] + ")",
+    "Index",
+    "Cart",
+    null,
+    new { id = "cart-status" })*@
+</div>

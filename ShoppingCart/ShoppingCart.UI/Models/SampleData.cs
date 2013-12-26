@@ -298,7 +298,9 @@ namespace ShoppingCart.UI.Models
                     ProductTranslations = new List<ProductTranslation>
                     {
                         new ProductTranslation
-                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Good, Bad, Ugly T-Shirt",ProductDescription="Good, Bad, Ugly T-Shirt"},
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Good, Bad, Ugly T-Shirt",
+                                ProductDescription="Good, Bad, Ugly T-Shirt",
+                            ProductLongDescription="Long Description budur."},
                         new ProductTranslation
                             {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Good, Bad, Ugly T-Shirt",ProductDescription="Good, Bad, Ugly T-Shirt"}
                                             
@@ -958,6 +960,10 @@ namespace ShoppingCart.UI.Models
             {
                 product3.RelatedProducts.Add(new ProductRelation { Product = product3, RelatedProduct = product1, DisplayOrder = 1 });
             }
+
+            
+            context.PaymentMethods.Add(new PaymentMethod { Enabled = true, PaymentMethodName = "Paypal Express", PaymentMethodDisplayOrder = 1 });
+
             base.Seed(context);
 
 

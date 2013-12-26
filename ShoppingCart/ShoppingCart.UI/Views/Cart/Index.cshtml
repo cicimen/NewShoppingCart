@@ -1,8 +1,47 @@
-﻿@model ShoppingCart.UI.Models.ShoppingCartViewModel
+﻿@model ShoppingCart.Service.ViewModel.ShoppingCartViewModel
 
 @{
     ViewBag.Title = "Shopping Cart";
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
+    string myCart = "";
+    string product = "";
+    string quantity = "";
+    string price= "";
+    string total = "";
+    string continueShopping = "";
+    string updateCart = "";
+    string proceedToCheckout = "";
+    string subTotal = "";
+    string total2 = "";
+    string shipping = "";
+    if (Html.GetLanguageCode() == "tr")
+    {
+        myCart = "SEPETİM";
+        product = "Ürün";
+        quantity = "Adet";
+        price = "BİRİM FİYAT";
+        total = "TOPLAM FİYAT";
+        continueShopping = "ALIŞVERİŞE DEVAM ET";
+        updateCart = "SEPETİ GÜNCELLE";
+        proceedToCheckout = "SATIN AL";
+        subTotal = "Ara Toplam";
+        total2 = "Toplam Fiyat";
+        shipping = "Kargo";
+    }
+    else
+    {
+        myCart = "My Cart";
+        product = "Product";
+        quantity = "Quantity";
+        price = "Price";
+        total = "Total";
+        continueShopping = "Continue Shopping";
+        updateCart = "Update Cart";
+        proceedToCheckout = "Proceed To Checkout";
+        subTotal = "Subtotal";
+        total2 = "Total";
+        shipping = "Shipping";
+    }
 }
 
 
@@ -20,14 +59,7 @@
 
                     <div class="box-header">
                         <h3>
-                            @if (@Html.GetLanguageCode() == "tr")
-                            {
-                                @:Sepetim
-                            }
-                            else
-                            {
-                                @:My cart:
-                            }
+                             @myCart
                         </h3>
                     </div>
                     
@@ -35,23 +67,12 @@
                         <div class="cart-items">
                             <table class="styled-table">
                                 <thead>
-                                    <tr>
-                                        @if (@Html.GetLanguageCode() == "tr")
-                                        {
-                                            <th class="col_product text-left">ÜRÜN ADI</th>
-                                            <th class="col_remove text-right">&nbsp;</th>
-                                            <th class="col_qty text-right">ADET</th>
-                                            <th class="col_discount text-right">BİRİM FİYAT</th>
-                                            <th class="col_total text-right">TOPLAM FİYAT</th>
-                                        }
-                                        else
-                                        { 
-                                            <th class="col_product text-left">Product</th>
-                                            <th class="col_remove text-right">&nbsp;</th>
-                                            <th class="col_qty text-right">Quantity</th>
-                                            <th class="col_discount text-right">Price</th>
-                                            <th class="col_total text-right">Total</th>
-                                        }
+                                    <tr>                                      
+                                        <th class="col_product text-left">@product</th>
+                                        <th class="col_remove text-right">&nbsp;</th>
+                                        <th class="col_qty text-right">@quantity</th>
+                                        <th class="col_discount text-right">@price</th>
+                                        <th class="col_total text-right">@total</th>                                       
                                     </tr>
                                 </thead>
 
@@ -67,25 +88,38 @@
                     <div class="box-footer">
                         <div class="pull-left">
                             <a href="/" class="btn btn-small">
-                                <i class="icon-chevron-left"></i> &nbsp; Continue shopping
+                                <i class="icon-chevron-left"></i> &nbsp; @continueShopping
                             </a>
                         </div>
                         <div class="pull-right">
                             <button type="submit" class="btn btn-small mm20" id="UpdateCart">
-                                <i class="icon-undo"></i> &nbsp; Update cart
+                                <i class="icon-undo"></i> &nbsp; @updateCart
                             </button>
                             @*<button type="submit" name="checkout" value="1" class="btn btn-primary btn-small mm20">
                                 Proceed to checkout &nbsp; <i class="icon-chevron-right"></i>
                             </button>*@
                             <a class="btn btn-primary btn-small mm20"
-                               href="@Url.Action("Index", "Checkout")">Proceed to checkout&nbsp;<i class="icon-chevron-right"></i></a>
+                               href="@Url.Action("Index", "Checkout")">@proceedToCheckout&nbsp;<i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
 
                     </div>
                 </div>
             <div class="col-lg-3 col-md-3">
+                <div class="cart-details">
+                    <div class="box">
+                        <div class="hgroup title">
+                            <h3>Order totals</h3>
+                            <h5>Shipping costs and taxes will be evaluated during checkout</h5>
+                        </div>
 
+                        <ul class="price-list">
+                            <li>@subTotal: <strong>@Model.CartTotal</strong></li>
+                            <li>@shipping: <strong>0</strong></li>
+                            <li class="important">@total2: <strong>@Model.CartTotal</strong></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             </div>
         @*</div>*@

@@ -46,7 +46,7 @@ namespace ShoppingCart.UI.Controllers
             {
                 Cities = Cities.All().OrderBy(x => x.DisplayOrder).ThenBy(x => x.CityName).ToList()
             };
-            return View(addressViewModel);
+            return View("_Create", addressViewModel);
         }
 
         [HttpPost]

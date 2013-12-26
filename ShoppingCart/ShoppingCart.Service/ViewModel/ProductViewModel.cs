@@ -8,6 +8,7 @@ namespace ShoppingCart.Service.ViewModel
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
+        public string ProductLongDescription { get; set; }
         public decimal OriginalPrice { get; set; }
         public decimal DiscountedPrice { get; set; }
         public bool Enabled { get; set; }
