@@ -1,0 +1,75 @@
+//
+// Pagination
+// --------------------------------------------------
+
+// Pagination
+// ------------------------- //
+
+.pager li {
+	> a, > span {
+		.rounded();
+		border-color: darken(@widgetBgGray, 10%);
+		background: darken(@widgetBgGray, 10%);
+		color: #444;
+	}
+	&:hover {
+		> a, > span {
+			background: @inverseColor;
+			border-color: @inverseColor;
+			color: #fff;
+		}
+	}
+	&.disabled {
+		> a, > span {
+			border-color: @contentBorder;
+		}
+	}
+}
+.pagination {
+	background: none;
+	.box-shadow(none);
+	vertical-align: middle;
+}
+.pagination > li > a:hover,
+.pagination > li.primary > a {
+	border-color: @inverseColor;
+	background: @inverseColor;
+	color: #fff;
+	text-shadow: none;
+} 
+.pagination > .active > a, 
+.pagination > .active > span {
+	border-color: @inverseColor;
+	background: @inverseColor;
+	color: #fff;
+}
+.pagination > li > a, 
+.pagination > li > span {
+	border-color: darken(@widgetBgGray, 10%);;
+	background: darken(@widgetBgGray, 10%);
+	#reset .rounded();
+	text-shadow: none;
+	.box-shadow(none);
+	color: #444;
+	font-weight: 600;
+}
+.pagination > li > a {
+	margin-right: 1px !important;
+}
+.pagination > .primary.disabled > a,
+.pagination > .disabled > a,
+.pagination > .disabled > span {
+	border-color: @contentBorder;
+	background: @widgetBg;
+	color: #dddddd;
+	font-weight: 600;
+	text-shadow: none;
+	.box-shadow(none);
+}
+.pagination > .disabled > a:hover {
+	border-color: @contentBorder;
+	background: @widgetBg;
+	color: #dddddd;
+	text-shadow: none;
+	.box-shadow(none);
+}

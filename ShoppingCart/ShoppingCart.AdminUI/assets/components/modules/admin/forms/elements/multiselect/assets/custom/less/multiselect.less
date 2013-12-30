@@ -1,0 +1,18 @@
+// Multiselect
+// -------------------------
+
+.ms-container .ms-selectable li.ms-hover, .ms-container .ms-selection li.ms-hover {
+	background: @primaryColor;
+}
+.ms-container {
+	.custom-header {
+		height: 30px; 
+		line-height: 30px; 
+		#gradient > .vertical(@contentGradient1, @contentGradient2);
+		padding: 0 @spacing;
+		font-weight: 600;
+		border: 1px solid @contentBorder;
+		&:not(.custom-footer) { border-bottom: none; }
+		&.custom-footer { border-top: none; } 
+	}
+}

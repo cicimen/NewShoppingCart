@@ -1,0 +1,112 @@
+//
+// Helpers
+// --------------------------------------------------
+
+// General
+// -------------------------
+
+.innerLR { padding-left: @spacing; padding-right: @spacing; position: relative; }
+.innerTB { padding-top: @spacing; padding-bottom: @spacing; position: relative; }
+.innerAll { padding: @spacing; position: relative; }
+.innerL { padding-left: @spacing; position: relative; }
+.innerR { padding-right: @spacing; position: relative; }
+.innerT { padding-top: @spacing; position: relative; }
+.innerB { padding-bottom: @spacing; position: relative; }
+
+// Other Utilities
+// -------------------------
+
+.center { text-align: center !important; }
+
+.margin-none { margin: 0 !important; }
+.margin-top-none { margin-top: 0 !important; }
+.margin-bottom-none { margin-bottom: 0 !important; }
+.margin-left-none { margin-left: 0 !important; }
+.margin-right-none { margin-right: 0 !important; }
+
+.padding-none { padding: 0 !important; }
+.padding-top-none { padding-top: 0 !important; }
+.padding-bottom-none { padding-bottom: 0 !important; }
+.padding-left-none { padding-left: 0 !important; }
+.padding-right-none { padding-right: 0 !important; }
+.padding-none-TB { padding-bottom: 0 !important; padding-top: 0 !important; }
+.padding-none-LR { padding-left: 0 !important; padding-right: 0 !important; }
+
+.border-none { border: none !important; }
+.border-top-none { border-top: none !important; }
+.border-bottom-none { border-bottom: none !important; }
+.border-left-none { border-left: none !important; }
+.border-right-none { border-right: none !important; }
+.box-shadow-none { #reset .boxShadow(); }
+
+.relativeWrap { position: relative; }
+.text-weight-regular { font-weight: normal !important; }
+.text-primary { color: @primaryColor !important; }
+.text-regular { color: #444 !important; }
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+.text-faded { color: #d7d7d7 !important; }
+.text-large { font-size: 35px !important; line-height: 40px !important; }
+.text-xlarge { font-size: 50px; line-height: 50px; }
+.text-xxlarge { font-size: 70px; line-height: 70px; }
+.text-underline { text-decoration: underline; }
+.text-right { text-align: right !important; }
+.inline-block { display: inline-block !important; }
+.overflow-y-auto { position: relative; overflow: hidden; overflow-y: auto; }
+.overflow-hidden { position: relative; overflow: hidden; }
+.containerBg { background: @containerBg; }
+.whiteBg { background: #fff; }
+
+// Grid
+// -------------------------
+
+.widget .row-merge {
+	margin: 0;
+}
+.row-merge {
+	position: relative;
+	> [class*="col-"] { padding: 0; }
+	> [class*="col-"] ~ [class*="col-"] {
+		position: static;
+		&:after { position: absolute; top: 0; bottom: 0; width: 1px; background: @contentBorder; content: ""; }
+	}
+	&.border-top, & ~ & { border-top: 1px solid @contentBorder; }
+	&.border-bottom { border-bottom: 1px solid @contentBorder; }
+	.fill-column {
+		&:before { position: absolute; top: 0; bottom: 0; width: inherit; background: @widgetBgGray; content: ""; }
+	}
+
+	@media (min-width: 768px) and (max-width: 991px) {
+		> [class*="col-sm-12"] ~ [class*="col-sm-12"] {
+			position: relative;
+			&:after { position: absolute; top: 0; bottom: auto; left: 0; right: 0; width: auto; height: 1px; background: @contentBorder; content: ""; }
+		}
+	}
+}
+
+// Icons grid
+.row-icons {
+	padding: 10px 0;
+	margin: 0;
+	[class*="col"] {
+		margin-bottom: @spacing;
+		padding: 0;
+		a {
+			line-height: 24px;
+			display: inline-block;
+			color: #1d1d1b;
+		}
+		&[class*="glyphicons"] {
+			padding-left: 50px;
+			i:before { left: 10px; top: 10px; }
+		}
+		i.fa {
+			vertical-align: middle;
+			margin: 0 10px;
+		}
+		i, i:before { color: @primaryColor; font-size: 24px; }
+		span {
+			padding-left: 5px;
+		}
+	}
+}

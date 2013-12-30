@@ -1,0 +1,37 @@
+// Select2 Templating
+// -------------------------
+
+.select2-results ul.select2-result-sub { padding: 0; }
+.select2-container img.flag {
+	height: 10px;
+	padding-right: 10px;
+}
+.select2-container img.flag,
+.select2-drop { z-index: 99999; }
+.select2-drop img.flag {
+	height: 10px;
+	padding-right: 10px;
+	max-width: 100%;
+}
+.select2-container .select2-choice {
+	border-color: @contentBorder;
+	background: #fff;
+	.rounded();
+}
+.select2-container-multi .select2-choices {
+	border-color: @contentBorder;
+	background: #fff;	
+}
+.select2-container .select2-choice div {
+	border-color: @containerBorder;
+	background: #fff;
+	.rounded();
+}
+.select2-drop {
+	border-color: @containerBorder;
+	#reset .boxShadow();
+}
+.select2-container-multi .select2-choices .select2-search-choice {
+	margin: 5px 0 3px 5px;
+	border-color: @containerBorder;
+}
