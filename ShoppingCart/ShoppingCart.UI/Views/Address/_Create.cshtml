@@ -2,6 +2,22 @@
 
 @{
     Layout = null;
+    string myAddresses = "";
+    string save = "";
+    string cancel = "";
+
+    if (Html.GetLanguageCode() == "tr")
+    {
+        myAddresses = "Adreslerim";
+        save = "Kaydet";
+        cancel = "İptal";
+    }
+    else
+    {
+        myAddresses = "My Addresses";
+        save = "Save";
+        cancel = "Cancel";
+    }
 }
 
     <div class="modal-dialog">
@@ -13,7 +29,7 @@
             <div class="modal-body">
 
                
-                @using (Ajax.BeginForm("Create", "Address", null, new AjaxOptions { UpdateTargetId = "addressTable", OnSuccess = "onSuccess" }))
+                @using (Html.BeginForm("Create", "Address"))
                 {
                     @Html.AntiForgeryToken()
 
@@ -92,8 +108,8 @@
 
                             <div class="form-group">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <a href="#" data-dismiss="modal" class="btn btn-default">Close</a>
-                                    <input type="submit" value="Create" class="btn btn-default" />
+                                    <a href="#" data-dismiss="modal" class="btn btn-default">@cancel</a>
+                                    <input id="createAddress" type="submit" value="@save" class="btn btn-default" />
                                 </div>
                             </div>
                         </div>
@@ -101,6 +117,35 @@
                 }
             </div>
             </div>
+
     </div>
 
 
+<script type="text/javascript">
+    $("#createAddress").click(function (e) {
+        e.preventDefault();
+        var form = $("#create-dialog-modal form");
+        form.validate();
+
+        if (form.valid()) {
+            $.ajax({
+                url: "/Address/Create",
+                data: form.serialize(),
+                type: "POST",
+                success: function (data) {
+                    if (data === "") {
+                        location.reload();
+                    }
+                    else {
+                        $("#create-dialog-modal").html(data);
+
+                        $.validator.unobtrusive.parse($("#create-dialog-modal"));
+                    }
+                }
+            });
+        }
+
+        return false;
+    });
+
+</script>

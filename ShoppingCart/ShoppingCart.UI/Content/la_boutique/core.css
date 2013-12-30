@@ -690,8 +690,13 @@ form {
   margin-bottom: 0;
 }
 label {
-  font-size: 12px;
+    /*egemen*/
+  /*font-size: 12px;
+  margin-bottom: 2px;*/
+  font-size: 13px;
   margin-bottom: 2px;
+
+   /*egemen*/
 }
 select,
 textarea,

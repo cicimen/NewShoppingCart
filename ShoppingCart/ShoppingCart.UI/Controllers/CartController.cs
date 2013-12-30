@@ -116,5 +116,18 @@ namespace ShoppingCart.UI.Controllers
             return PartialView("CartSummary");
         }
 
+        [AjaxOrChildActionOnly]
+        public ActionResult CartTotal()
+        {
+            var viewModel = new ShoppingCartViewModel
+            {
+                CartItems = Carts.GetCart(this.HttpContext).GetCartItems(),
+                CartTotal = Carts.GetTotal(),
+                CartCount = Carts.GetCount()
+            };
+            return PartialView("_CartTotal", viewModel);
+        }
+
+
     }
 }

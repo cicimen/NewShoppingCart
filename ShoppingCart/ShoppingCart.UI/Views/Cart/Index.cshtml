@@ -11,9 +11,6 @@
     string continueShopping = "";
     string updateCart = "";
     string proceedToCheckout = "";
-    string subTotal = "";
-    string total2 = "";
-    string shipping = "";
     if (Html.GetLanguageCode() == "tr")
     {
         myCart = "SEPETİM";
@@ -24,9 +21,6 @@
         continueShopping = "ALIŞVERİŞE DEVAM ET";
         updateCart = "SEPETİ GÜNCELLE";
         proceedToCheckout = "SATIN AL";
-        subTotal = "Ara Toplam";
-        total2 = "Toplam Fiyat";
-        shipping = "Kargo";
     }
     else
     {
@@ -38,9 +32,6 @@
         continueShopping = "Continue Shopping";
         updateCart = "Update Cart";
         proceedToCheckout = "Proceed To Checkout";
-        subTotal = "Subtotal";
-        total2 = "Total";
-        shipping = "Shipping";
     }
 }
 
@@ -99,28 +90,26 @@
                                 Proceed to checkout &nbsp; <i class="icon-chevron-right"></i>
                             </button>*@
                             <a class="btn btn-primary btn-small mm20"
-                               href="@Url.Action("Index", "Checkout")">@proceedToCheckout&nbsp;<i class="icon-chevron-right"></i></a>
+                               href="@Url.Action("Address", "Checkout")">@proceedToCheckout&nbsp;<i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
 
                     </div>
                 </div>
-            <div class="col-lg-3 col-md-3">
-                <div class="cart-details">
-                    <div class="box">
-                        <div class="hgroup title">
-                            <h3>Order totals</h3>
-                            <h5>Shipping costs and taxes will be evaluated during checkout</h5>
-                        </div>
 
-                        <ul class="price-list">
-                            <li>@subTotal: <strong>@Model.CartTotal</strong></li>
-                            <li>@shipping: <strong>0</strong></li>
-                            <li class="important">@total2: <strong>@Model.CartTotal</strong></li>
-                        </ul>
-                    </div>
-                </div>
+
+
+
+
+            <div class="col-lg-3 col-md-3" id="cartTotal">
+
+
+                @Html.Partial("_CartTotal")
+
+                
             </div>
+
+
             </div>
         @*</div>*@
 </section>
@@ -156,9 +145,14 @@
                         //{
                         //    $('#item-count-' + data.DeleteId).text(data.ItemCount);
                         //}
-                        $('#cart-total').text(data.CartTotal);
+                        //$('#cartTotal').text(data.CartTotal);
+
+                        $("#cartTotal").load('@Url.Action("CartTotal","Cart",null)', function (result) {
+                           
+                        });
+
                         $('#update-message').text(data.Message);
-                        $('#cart-status').text('Cart (' + data.CartCount + ')');
+                        $('#cartCount').text(data.CartCount);
                     });
                 }
             });

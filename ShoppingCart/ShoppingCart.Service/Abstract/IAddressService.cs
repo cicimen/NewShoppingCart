@@ -9,5 +9,6 @@ namespace ShoppingCart.Service
         IEnumerable<Address> GetFor(ApplicationUser user);
         void AddFor(AddressViewModel address, ApplicationUser user);
         void DeleteAddress(int id, ApplicationUser user);
+        void UpdateAddress(int id, ApplicationUser user, Address address);
     }
 }

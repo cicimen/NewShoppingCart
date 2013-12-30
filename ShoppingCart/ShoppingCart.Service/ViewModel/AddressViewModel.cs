@@ -11,7 +11,7 @@ namespace ShoppingCart.Service.ViewModel
     {
         public int AddressID { get; set; }
         [Required]
-        [MaxLength(100)]
+        [MaxLength(75)]
         public string AddressDescription { get; set; }
         [MaxLength(200)]
         public string NameSurname { get; set; }

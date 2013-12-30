@@ -1,15 +1,43 @@
 ﻿@model IEnumerable<ShoppingCart.Data.Entity.Address>
 
+@{
+    Layout = null;
+    string addressDescription = "";
+    string address = "";
+    string city = "";
+    string edit = "";
+    string delete = "";
+
+    if (Html.GetLanguageCode() == "tr")
+    {
+        addressDescription = "Adres Tanımı";
+        address = "Adres";
+        city="Şehir";
+        edit = "Düzenle";
+        delete = "SİL";
+    }
+    else
+    {
+        addressDescription = "Address Description";
+        address = "Address";
+        city = "City";
+        edit = "Edit";
+        delete = "Delete";
+    }
+}
+
+
+
 <table class="table table-condensed table-striped" id="addressTable">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AddressDescription)
+            @addressDescription
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AddressLine1)
+            @address
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.City)
+            @city        
         </th>
 
         <th></th>
@@ -28,8 +56,16 @@
                 @Html.DisplayFor(modelItem => item.City.CityName)
             </td>
             <td>
-                @Ajax.ActionLink("Edit", "Edit", "Address", new { item.AddressID }, new AjaxOptions { UpdateTargetId = "addressTable", OnSuccess = "onSuccess" }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @*@Ajax.ActionLink("Edit", "Edit", "Address", new { item.AddressID }, new AjaxOptions { UpdateTargetId = "addressTable", OnSuccess = "onSuccess" },
+                new { @class="btn btn-mini btn-primary"})*@ 
+
+                @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-mini btn-primary" })*@
+
+                <button  class="btn btn-mini btn-primary" id="@item.AddressID"  onclick="loadEditModal(this.id);" >@edit</button>
+
+                <button class="btn btn-mini btn-primary" id="@item.AddressID" onclick="loadDeleteModal(this.id);" >@delete</button>
+
+                
             </td>
         </tr>
     }

@@ -3,43 +3,80 @@
 @{
     ViewBag.Title = "Addresses";
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
+    string myAddresses = "";
+    string createNew = "";
+
+    if (Html.GetLanguageCode() == "tr")
+    {
+        myAddresses = "Adres Bilgilerim";
+        createNew = "YENİ adres ekle";
+    }
+    else
+    {
+        myAddresses = "My Addresses";
+        createNew = "Create New";
+    }
 }
 
-<h2>Index</h2>
+<h3>@myAddresses</h3>
 
 
 
 @Html.Partial("_AddressTable", Model)
 
 <p>
-    <button id="create-modal-opener" class="btn btn-default" data-toggle="modal">Create New</button>
+    <button id="create-modal-opener" class="btn btn-default" data-toggle="modal">@createNew</button>
 </p>
 
 @*@{Html.RenderAction("Create", "Address", null);}*@
 
-@Html.Partial("_Edit",null)
+@*@Html.Partial("_Edit",null)*@
 
 <div id="create-dialog-modal" title="Create Address" class="modal">
 </div>
 <div id="edit-dialog-modal" title="Edit Address" class="modal">
+</div>
+<div id="delete-dialog-modal" title="Delete Address" class="modal">
 </div>
 
     @section scripts
 {
         <script type="text/javascript">
 
+            function loadEditModal(id) {
+                $("#edit-dialog-modal").load('@Url.Action("Edit", "Address")' + '?id=' + id, function (result) {
+                    $("#edit-dialog-modal").modal({ show: true });
+                    $.validator.unobtrusive.parse(this);
+                });
+            }
+
+            function loadDeleteModal(id) {
+                $("#delete-dialog-modal").load('@Url.Action("Delete", "Address")' + '?id=' + id, function (result) {
+                    $("#delete-dialog-modal").modal({ show: true });
+                    $.validator.unobtrusive.parse(this);
+                });
+            }
+
             $("#create-modal-opener").click(function () {
                 $("#create-dialog-modal").load('@Url.Action("Create","Address",null)', function (result)
                 {                
                     $("#create-dialog-modal").modal({ show: true });
                     $.validator.unobtrusive.parse(this);
-                });              
+                });
+
+               
+
+
             });
 
-            function onSuccess() {
-                alert("asd");
-                //$("#create-dialog-modal").modal("close");
-                $("#window_open").modal("close");
-            }
+           
+
+
+
+            //function onSuccess() {
+            //    alert("asd");
+            //    //$("#create-dialog-modal").modal("close");
+            //    $("#window_open").modal("close");
+            //}
         </script>
     }

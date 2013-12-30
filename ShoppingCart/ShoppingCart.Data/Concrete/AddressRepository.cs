@@ -48,13 +48,17 @@ namespace ShoppingCart.Data.Concrete
         public void DeleteAddress(int id, ApplicationUser user)
         {
             Address address = user.Addresses.SingleOrDefault(a => a.AddressID == id);
+            
             if (address != null)
             {
                 Delete(address);
-                if (!ShareContext)
-                {
-                    Context.SaveChanges();
-                }
+                Context.SaveChanges();
+
+
+                //if (!ShareContext)
+                //{
+                //    Context.SaveChanges();
+                //}
             }
         }
 

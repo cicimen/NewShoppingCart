@@ -1,6 +1,6 @@
 ﻿
 <div class="mini-cart">
-    <a href="@Url.Action("Index","Cart")"><span>@ViewData["CartCount"]</span></a>
+    <a href="@Url.Action("Index","Cart")"><span id="cartCount">@ViewData["CartCount"]</span></a>
 
     @*@Html.ActionLink("Cart (" + ViewData["CartCount"] + ")",
     "Index",

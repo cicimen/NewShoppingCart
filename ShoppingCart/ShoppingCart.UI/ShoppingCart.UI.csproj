@@ -198,6 +198,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Attributes.cs" />
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -360,7 +361,9 @@
     <Content Include="Views\Address\_Edit.cshtml" />
     <Content Include="Views\Cart\_CartTable.cshtml" />
     <Content Include="Views\Shared\_CheckoutLayout.cshtml" />
-    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\Address.cshtml" />
+    <Content Include="Views\Cart\_CartTotal.cshtml" />
+    <Content Include="Views\Address\_Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
