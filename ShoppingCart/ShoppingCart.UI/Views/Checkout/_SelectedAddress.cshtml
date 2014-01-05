@@ -1,0 +1,21 @@
+﻿@model ShoppingCart.Data.Entity.Address
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-6 col-lg-6">
+        <div class="box highlight">
+            <div class="hgroup title">
+                <h3>@Model.AddressDescription</h3>
+                <h6>@Model.NameSurname</h6>
+                <h6>@Model.City.CityName</h6>
+                <h6>@Model.AddressLine1</h6>
+                <h6>@Model.AddressLine2</h6>
+                <h6>@Model.PostalCode</h6>
+                <h6>@Model.Phone</h6>
+                <h6>@Model.PhoneMobile</h6>
+            </div>
+        </div>
+    </div>
+</div>

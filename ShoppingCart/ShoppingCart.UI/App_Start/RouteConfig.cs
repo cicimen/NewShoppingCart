@@ -26,6 +26,16 @@ namespace ShoppingCart.UI
 
 
             routes.MapRoute(null,
+           "Checkout/Address",
+           new { controller = "Checkout", action = "Address" }
+           );
+            routes.MapRoute(null,
+           "Checkout/Shipment",
+           new { controller = "Checkout", action = "Shipment" }
+           );
+
+
+            routes.MapRoute(null,
            "Checkout",
            new { controller = "Checkout", action = "Index" }
            );

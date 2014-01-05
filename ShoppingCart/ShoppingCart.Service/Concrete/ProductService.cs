@@ -95,16 +95,16 @@ namespace ShoppingCart.Service
         public ProductsListViewModel GetProductListViewModel(Language language,string categoryURLText,int page,int pageSize)
         {
             List<ProductViewModel> productModels = new List<ProductViewModel>();
-            IQueryable<Product> products;
+            List<Product> products;
             if (string.IsNullOrWhiteSpace(categoryURLText))
             {
-                products = _products.All(language).OrderBy(p => p.ProductURLText).Skip((page - 1) * pageSize).Take(pageSize);
+                products = _products.All(language).OrderBy(p => p.ProductURLText).Skip((page - 1) * pageSize).Take(pageSize).ToList();
             }
             else
             {
                 List<string> categoryURLTexts = _context.Categories.GetBy(language, categoryURLText).Offspring.Select(o => o.Offspring.CategoryURLText).ToList();
                 categoryURLTexts.Add(categoryURLText);
-                products = _products.GetByCategory(language, categoryURLTexts).OrderBy(p => p.ProductURLText).Skip((page - 1) * pageSize).Take(pageSize);
+                products = _products.GetByCategory(language, categoryURLTexts).OrderBy(p => p.ProductURLText).Skip((page - 1) * pageSize).Take(pageSize).ToList();
             }
             foreach (var item in products)
             {
@@ -145,7 +145,7 @@ namespace ShoppingCart.Service
             }
             List<string> categoryURLTexts= _context.Categories.GetBy(language, categoryURLText).Offspring.Select(o=> o.Offspring.CategoryURLText).ToList();
             categoryURLTexts.Add(categoryURLText);
-            return _products.GetByCategory(language, categoryURLTexts).OrderBy(p => p.ProductURLText).Skip(skip).Take(take);
+            return _products.GetByCategory(language, categoryURLTexts,true,false,true,false,false,false).OrderBy(p => p.ProductURLText).Skip(skip).Take(take);
         }
 
         public int GetCountByCategoryForHome(Language language, string categoryURLText)

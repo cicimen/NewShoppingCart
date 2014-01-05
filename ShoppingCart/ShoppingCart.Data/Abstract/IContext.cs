@@ -18,6 +18,7 @@ namespace ShoppingCart.Data.Abstract
         IOrderItemRepository OrderItems { get; }
         IProductRepository Products { get; }
         IProductImageRepository ProductImages { get; }
+        IShippingMethodRepository ShippingMethods { get; }
         UserManager<ApplicationUser> UserManager { get; }
 
         int SaveChanges();

@@ -60,6 +60,7 @@
     <Compile Include="Abstract\ICityService.cs" />
     <Compile Include="Abstract\IProductImageService.cs" />
     <Compile Include="Abstract\IProductService.cs" />
+    <Compile Include="Abstract\IShippingMethodService.cs" />
     <Compile Include="Concrete\CityService.cs" />
     <Compile Include="Concrete\AddressService.cs" />
     <Compile Include="Concrete\CartService.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Abstract\IAddressService.cs" />
     <Compile Include="Abstract\ILanguageService.cs" />
     <Compile Include="Concrete\LanguageService.cs" />
+    <Compile Include="Concrete\ShippingMethodService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="ViewModel\AddressViewModel.cs" />

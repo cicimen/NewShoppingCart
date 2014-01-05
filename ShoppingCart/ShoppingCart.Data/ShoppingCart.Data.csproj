@@ -70,6 +70,7 @@
     <Compile Include="Abstract\IProductImageRepository.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\IShippingMethodRepository.cs" />
     <Compile Include="Concrete\OrderItemRepository.cs" />
     <Compile Include="Concrete\ApplicationDbContext.cs" />
     <Compile Include="Concrete\CategoryRepository.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Concrete\ProductImageRepository.cs" />
     <Compile Include="Concrete\ProductRepository.cs" />
     <Compile Include="Concrete\EfRepository.cs" />
+    <Compile Include="Concrete\ShippingMethodRepository.cs" />
     <Compile Include="Entity\Address.cs" />
     <Compile Include="Entity\ApplicationUser.cs" />
     <Compile Include="Entity\Cart.cs" />

@@ -1,0 +1,168 @@
+﻿@model IList<ShoppingCart.Data.Entity.ShippingMethod>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CheckoutLayout.cshtml";
+    string address = "";
+    string shippingMethod = "";
+    string paymentMethod = "";
+    string orderReview = "";
+    string shipmentAddress = "";
+    string continue1 = "";
+    string backToCart = "";
+    string createNew = "";
+
+    if (Html.GetLanguageCode() == "tr")
+    {
+        address = "Adres";
+        shippingMethod = "Kargo Seçenekleri";
+        paymentMethod = "Ödeme Seçenekleri";
+        orderReview = "Siparişi Tamamla";
+        shipmentAddress = "Gönderi Adresi";
+        continue1 = "Devam Et";
+        backToCart = "Sepete Dön";
+        createNew = "YENİ adres ekle";
+    }
+    else
+    {
+        address = "Address";
+        shippingMethod = "Shipping Method";
+        paymentMethod = "Payment Method";
+        orderReview = "Order Review";
+        shipmentAddress = "Shipment Address";
+        continue1 = "Continue";
+        backToCart = "Back To Cart";
+        createNew = "Create New";
+    }
+}
+
+<section class="checkout">
+    <div class="row">
+        <div class="col-md-9 col-lg-9">
+            <div class="box">
+
+                <!-- Checkout progress -->
+                <div id="checkout-progress">
+                    <ul class="nav nav-tabs">
+                        <li>
+                            <a href="@Url.Action("Address","Checkout",null)">
+                                <i class="icon-map-marker icon-large"></i>
+                                <span>@address</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                <i class="icon-truck icon-large"></i>
+                                <span>@shippingMethod</span>
+                            </a>
+                        </li>
+                        <li>
+                            <div>
+                                <i class="icon-money icon-large"></i>
+                                <span>@paymentMethod</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <i class="icon-search icon-large"></i>
+                                <span>@orderReview</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End id="checkout-progress" -->
+                <!-- Checkout content -->
+                <div id="checkout-content">
+                    <div class="box-header">
+                        <h3>@shippingMethod</h3>
+                    </div>
+                    <div class="box-content">
+                        
+                            <div class="shipping_methods">
+                                <div class="row">
+                                    
+
+                                        @foreach (var item in Model)
+                                        {
+                                            <div class="col-md-3 col-lg-3">
+                                                <div class="box highlight">
+                                                    <div class="hgroup title">
+                                                        <h3>@item.ShippingMethodName</h3>
+                                                        <h5>@item.ShippingMethodDescription</h5>
+                                                    </div>
+
+                                                    <div class="box-content highlight">
+                                                        <div class="price">
+                                                            <strong>@item.ShippingMethodPrice</strong>
+                                                        </div>
+
+                                                        <input type="radio" value="@item.ShippingMethodID" name="shipping_option" id="@item.ShippingMethodID">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        
+
+                                   
+                                </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <div class="box-footer">
+                        <div class="pull-left">
+                            @*<a href="cart.html" class="btn btn-small">
+                                    <i class="icon-chevron-left"></i> &nbsp; @backToCart
+                                </a>*@
+
+                            <a href="@Url.Action("Index", "Cart")" class="btn btn-small">
+                                <i class="icon-chevron-left"></i> &nbsp; @backToCart
+                            </a>
+
+                        </div>
+                        <div class="pull-right">
+                            @*<button type="submit" class="btn btn-primary">
+                                    @continue1 &nbsp; <i class="icon-chevron-right"></i>
+                                </button>*@
+
+                            <a class="btn btn-primary btn-small mm20"
+                               href="@Url.Action("Shipment", "Checkout")">@continue1&nbsp;<i class="icon-chevron-right"></i></a>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End id="checkout-content" -->
+
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-3">
+            @Html.Action("CartCheckoutSummary", "Cart", null)
+        </div>
+    </div>
+</section>
+
+<div id="create-dialog-modal" title="Create Address" class="modal">
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+            $("#create-modal-opener").click(function () {
+                $("#create-dialog-modal").load('@Url.Action("Create","Address",null)', function (result)
+                {
+                    $("#create-dialog-modal").modal({ show: true });
+                    $.validator.unobtrusive.parse(this);
+                });
+            });
+
+        function selectAddress() {
+            var selectedAddressID = $('#SelectedAddressID option:selected').val();
+            $("#selectedAddress").load('@Url.Action("SelectAddress","Checkout")' + '?selectedAddressID=' + selectedAddressID, function (result) {
+            });
+        }
+
+    </script>
+}

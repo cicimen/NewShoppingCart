@@ -19,7 +19,7 @@ namespace ShoppingCart.Service
 
         public IEnumerable<Category> GetAllRoot(Language language)
         {
-            return _categories.All(language, true, false, false, true).Where(c=>c.Parent == null);
+            return _categories.All(language, true, false, false, true).Where(c=>c.Parent == null).ToList();
         }
     }
 }

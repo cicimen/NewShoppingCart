@@ -13,6 +13,7 @@ using ShoppingCart.UI.Helpers;
 
 namespace ShoppingCart.UI.Controllers
 {
+    //[RequireHttps] 
     [Authorize]
     public class AddressController : ShoppingCartControllerBase
     {
@@ -142,14 +143,17 @@ namespace ShoppingCart.UI.Controllers
                         userAddress.PhoneMobile = address.PhoneMobile;
                         userAddress.PostalCode = address.PostalCode;
                         Addresses.UpdateAddress(userAddress.AddressID, user, userAddress);
-                        
 
-                        //if (Request.IsAjaxRequest())
-                        //{
-                        //    IEnumerable<Address> addresses = Addresses.GetFor(user);
-                        //    return PartialView("_AddressTable", addresses);
-                        //}
-                        //return RedirectToAction("Index", "Address", null);
+                        if (Session["CheckoutAddress"] != null)
+                        {
+                            Address sessionAddress = (Address) Session["CheckoutAddress"] ;
+                            if(sessionAddress.AddressID == userAddress.AddressID)
+                            {
+                                Session["CheckoutAddress"] = userAddress;
+                            }
+                        }
+
+
                         return null;
                     }
                     else
@@ -206,6 +210,14 @@ namespace ShoppingCart.UI.Controllers
                     if (userAddress != null)
                     {
                         Addresses.DeleteAddress(userAddress.AddressID, user);
+                        if (Session["CheckoutAddress"] != null)
+                        {
+                            Address sessionAddress = (Address)Session["CheckoutAddress"];
+                            if (sessionAddress.AddressID == userAddress.AddressID)
+                            {
+                                Session["CheckoutAddress"] = null;
+                            }
+                        }
                         return null;
                     }
                     else

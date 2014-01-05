@@ -21,6 +21,8 @@ namespace ShoppingCart.UI.Controllers
         public ICartService Carts { get; private set; }
         public ICityService Cities { get; private set; }
         public ILanguageService Languages { get; private set; }
+
+        public IShippingMethodService ShippingMethods { get; private set; }
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         public ShoppingCartControllerBase()
@@ -33,6 +35,7 @@ namespace ShoppingCart.UI.Controllers
             Carts = new CartService(DataContext);
             Cities = new CityService(DataContext);
             Languages = new LanguageService(DataContext);
+            ShippingMethods = new ShippingMethodService(DataContext);
             UserManager = DataContext.UserManager;
             UserManager.UserValidator = new UserValidator<ApplicationUser>(UserManager)
             {

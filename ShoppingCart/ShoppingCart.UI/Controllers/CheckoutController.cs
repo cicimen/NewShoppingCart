@@ -13,13 +13,14 @@ using ShoppingCart.UI.Helpers;
 
 namespace ShoppingCart.UI.Controllers
 {
+    //[RequireHttps] 
     [Authorize]
     public class CheckoutController : ShoppingCartControllerBase
     {
-        //
-        // GET: /Checkout/
         public ActionResult Address()
         {
+            //TODO: Eğer sepet boşsa sepete dön
+
             var viewModel = new CheckoutAddressViewModel { Addresses = new List<AddressViewModel>() };
             List<Address> addresses = null;
             if (this.User != null && this.User.Identity.IsAuthenticated)
@@ -35,9 +36,10 @@ namespace ShoppingCart.UI.Controllers
             int count = 0;
             foreach (var address in addresses)
             {
-                if (count == 0)
+                if (count == 0 && Session["CheckoutAddress"] == null)
                 {
-                    viewModel.SelectedAddress = address.AddressID;
+                    Session["CheckoutAddress"] = address;
+                    viewModel.SelectedAddressID = address.AddressID;
                     count++;
                 }
                 viewModel.Addresses.Add(new AddressViewModel {
@@ -53,7 +55,49 @@ namespace ShoppingCart.UI.Controllers
                 });
             }
 
+            if (Session["CheckoutAddress"] != null)
+            {
+                var address = (Address)Session["CheckoutAddress"];
+                viewModel.SelectedAddressID = address.AddressID;
+                count++;
+            }
+
+
             return View(viewModel);
         }
-	}
+
+        public ActionResult Shipment()
+        {
+            //TODO: Eğer sepet boşsa sepete dön
+            if (Session["CheckoutAddress"] == null)
+            {
+                return RedirectToAction("Address", "Checkout", null);
+            }
+            List<ShippingMethod> shippingMethods = ShippingMethods.All().Where(sm => sm.Enabled == true).ToList();
+
+
+            return View(shippingMethods);
+        }
+
+
+
+
+        [AjaxOrChildActionOnlyAttribute]
+        public ActionResult SelectAddress(int selectedAddressID)
+        {
+            if (this.User != null && this.User.Identity.IsAuthenticated)
+            {
+                ApplicationUser user = UserManager.FindByName(System.Web.HttpContext.Current.User.Identity.Name);
+                if (user != null)
+                {
+                    Address address = Addresses.GetFor(user).Where(a=> a.AddressID == selectedAddressID).SingleOrDefault();
+                    Session["CheckoutAddress"] = address;
+                    return PartialView("_SelectedAddress", address);
+                }
+                return PartialView("_SelectedAddress",null);
+            }
+            return null;
+        }
+    
+    }
 }

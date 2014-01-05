@@ -18,16 +18,6 @@ namespace ShoppingCart.UI.Controllers
 {
     public class ImageController : ShoppingCartControllerBase
     {
-        //private IProductImageRepository repository;
-
-        //TODO: Dışarıdan parametre olarak al bunu
-        //public int PageSize = 10;
-        //public ImageController(IProductImageRepository productImageRepository)
-        //{
-        //    this.repository = productImageRepository;
-        //}
-
-
         public FileContentResult GetImage(int productImageID)
         {
             ProductImage productImage = ProductImages.GetBy(productImageID);

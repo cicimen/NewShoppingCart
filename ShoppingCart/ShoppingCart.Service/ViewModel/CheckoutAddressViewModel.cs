@@ -9,7 +9,7 @@ namespace ShoppingCart.Service.ViewModel
 {
     public class CheckoutAddressViewModel
     {
-        public int SelectedAddress { get; set; }
+        public int SelectedAddressID { get; set; }
         public List<AddressViewModel> Addresses { get; set; }
     }
 }

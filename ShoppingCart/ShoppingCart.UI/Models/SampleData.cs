@@ -961,6 +961,23 @@ namespace ShoppingCart.UI.Models
                 product3.RelatedProducts.Add(new ProductRelation { Product = product3, RelatedProduct = product1, DisplayOrder = 1 });
             }
 
+           
+            context.ShippingMethods.Add(new ShippingMethod
+            {
+                Enabled = true,
+                ShippingMethodDescription = "Aras Kargo Açıklama",
+                ShippingMethodDisplayOrder = 1,
+                ShippingMethodName = "Aras Kargo",
+                ShippingMethodPrice = 4.5M
+            });
+            context.ShippingMethods.Add(new ShippingMethod
+            {
+                Enabled = true,
+                ShippingMethodDescription = "Yurtiçi Kargo Açıklama",
+                ShippingMethodDisplayOrder = 2,
+                ShippingMethodName = "Yurtiçi Kargo",
+                ShippingMethodPrice = 6.5M
+            });
             
             context.PaymentMethods.Add(new PaymentMethod { Enabled = true, PaymentMethodName = "Paypal Express", PaymentMethodDisplayOrder = 1 });
 
