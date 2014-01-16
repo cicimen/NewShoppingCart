@@ -1,15 +1,15 @@
-﻿@model ShoppingCart.Service.ViewModel.CheckoutShipmentViewModel
+﻿@model IList<ShoppingCart.Data.Entity.PaymentMethod>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_CheckoutLayout.cshtml";
     string address = "";
     string shippingMethod = "";
     string paymentMethod = "";
-    //string orderReview = "";
-    //string shipmentAddress = "";
+    string orderReview = "";
+    string shipmentAddress = "";
     string continue1 = "";
-    //string backToCart = "";
-    //string createNew = "";
+    string backToCart = "";
+    string createNew = "";
     string back = "";
 
     if (Html.GetLanguageCode() == "tr")
@@ -17,11 +17,11 @@
         address = "Adres";
         shippingMethod = "Kargo";
         paymentMethod = "Ödeme";
-        //orderReview = "Siparişi Tamamla";
-        //shipmentAddress = "Gönderi Adresi";
+        orderReview = "Siparişi Tamamla";
+        shipmentAddress = "Gönderi Adresi";
         continue1 = "Devam Et";
-        //backToCart = "Sepete Dön";
-        //createNew = "YENİ adres ekle";
+        backToCart = "Sepete Dön";
+        createNew = "YENİ adres ekle";
         back = "GERİ";
     }
     else
@@ -29,11 +29,11 @@
         address = "Address";
         shippingMethod = "Shipping";
         paymentMethod = "Payment";
-        //orderReview = "Order Review";
-        //shipmentAddress = "Shipment Address";
+        orderReview = "Order Review";
+        shipmentAddress = "Shipment Address";
         continue1 = "Continue";
-        //backToCart = "Back To Cart";
-        //createNew = "Create New";
+        backToCart = "Back To Cart";
+        createNew = "Create New";
         back = "Back";
     }
 }
@@ -44,25 +44,31 @@
             <div class="box">
 
                 <!-- Checkout progress -->
-                <div id="checkout-progress">
+                @*<div id="checkout-progress">*@
                     <ul class="nav nav-tabs">
+                        @foreach (var item in Model)
+                        {
+                            
+                        }
                         <li>
                             <a href="@Url.Action("Address","Checkout",null)">
                                 <i class="icon-map-marker icon-large"></i>
                                 <span>@address</span>
                             </a>
                         </li>
-                        <li class="active">
-                            <a href="#">
-                                <i class="icon-truck icon-large"></i>
+                        <li >
+                            <a href="@Url.Action("Shipment", "Checkout", null)">
+                                <i class=" icon-truck icon-large">
+                                </i>
                                 <span>@shippingMethod</span>
                             </a>
                         </li>
-                        <li>
-                            <div>
-                                <i class="icon-money icon-large"></i>
-                                <span>@paymentMethod</span>
-                            </div>
+                        <li class="active">
+
+                                <a href="#">
+                                    <i class="icon-money icon-large"></i>
+                                    <span>@paymentMethod</span>
+                                </a>
                         </li>
                         @*<li>
                             <div>
@@ -71,7 +77,7 @@
                             </div>
                         </li>*@
                     </ul>
-                </div>
+                @*</div>*@
                 <!-- End id="checkout-progress" -->
                 <!-- Checkout content -->
                 <div id="checkout-content">
@@ -79,34 +85,42 @@
                         <h3>@shippingMethod</h3>
                     </div>
                     <div class="box-content">
-                        
-                            <div class="shipping_methods">
-                                <div class="row">
-                                    
 
-                                        @foreach (var item in Model.ShipmentMethods)
-                                        {
-                                            <div class="col-md-3 col-lg-3">
-                                                <div class="box highlight">
-                                                    <div class="hgroup title">
-                                                        <h3>@item.ShippingMethodName</h3>
-                                                        <h5>@item.ShippingMethodDescription</h5>
-                                                    </div>
+                        <div class="shipping_methods">
+                            <div class="row">
+                                <div class="col-lg-1 col-md-1"></div>
+                                <div class="col-lg-10 col-md-10">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#">Home</a></li>
+                                        <li><a href="#">Profile</a></li>
+                                        <li><a href="#">Messages</a></li>
+                                    </ul>
+                                    <div class="tab-content">
 
-                                                    <div class="box-content highlight">
-                                                        <div class="price">
-                                                            <strong>@item.ShippingMethodPrice</strong>
-                                                        </div>
-
-                                                        <input type="radio" value="@item.ShippingMethodID" name="shipping_option" id="@item.ShippingMethodID" onclick="selectShipment(@item.ShippingMethodID)">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        }
-                                        
-
-                                   
+                                    </div>
                                 </div>
+                                <div class="col-lg-1 col-md-1"></div>
+
+                                @*@foreach (var item in Model)
+                                {
+                                    <div class="col-md-3 col-lg-3">
+                                        <div class="box highlight">
+                                            <div class="hgroup title">
+                                                <h3>@item.PaymentMethodName</h3>
+                                                <h5>@item.PaymentMethodDescription</h5>
+                                            </div>
+
+                                            <div class="box-content highlight">
+
+                                                <input type="radio" value="@item.PaymentMethodID" name="shipping_option" id="@item.PaymentMethodID">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }*@
+
+
+
+                            </div>
                         </div>
 
 
@@ -121,7 +135,7 @@
                                     <i class="icon-chevron-left"></i> &nbsp; @backToCart
                                 </a>*@
 
-                            <a href="@Url.Action("Address", "Checkout")" class="btn btn-small">
+                            <a href="@Url.Action("Shipment", "Checkout")" class="btn btn-small">
                                 <i class="icon-chevron-left"></i> &nbsp; @back
                             </a>
 
@@ -148,16 +162,3 @@
     </div>
 </section>
 
-@section scripts
-{
-    <script type="text/javascript">
-        function selectShipment(shipmentMethodID) {
-            $.ajax({
-                type:"Post",
-                url: '@Url.Action("SelectShipment","Checkout")' + '?selectedShipmentID=' + shipmentMethodID,
-                data : 'selectedShipmentID='+shipmentMethodID
-                });
-        }
-
-    </script>
-}

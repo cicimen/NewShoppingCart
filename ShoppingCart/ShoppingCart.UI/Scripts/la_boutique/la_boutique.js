@@ -122,7 +122,8 @@ $(document).ready(function() {
 			}
 		});
 	})();
-	(function() {
+    (function () {
+
 		var $product_list = $('.product-list.isotope');
 		$product_list.addClass('loading');
 		$product_list.imagesLoaded(function() {
@@ -132,6 +133,22 @@ $(document).ready(function() {
 				this.removeClass('loading');
 			});
 		});
+
+        //egemen
+		imagesLoaded($('.primary'), function () {
+		    $('img.primary').each(function () {
+		        $(this).css('display', 'block');
+		    });
+		});
+		imagesLoaded($('.secondary'), function () {
+		    $('img.secondary').each(function () {
+		        $(this).css('display', 'block');
+		    });
+		});
+        //egemen
+
+
+
 	})();
 	(function() {
 		imagesLoaded($('.post-list img'), function(){

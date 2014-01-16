@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\ICityService.cs" />
+    <Compile Include="Abstract\IPaymentMethodService.cs" />
     <Compile Include="Abstract\IProductImageService.cs" />
     <Compile Include="Abstract\IProductService.cs" />
     <Compile Include="Abstract\IShippingMethodService.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Concrete\AddressService.cs" />
     <Compile Include="Concrete\CartService.cs" />
     <Compile Include="Concrete\CategoryService.cs" />
+    <Compile Include="Concrete\PaymentMethodService.cs" />
     <Compile Include="Concrete\ProductImageService.cs" />
     <Compile Include="Concrete\ProductService.cs" />
     <Compile Include="Abstract\ICategoryService.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="ViewModel\AddressViewModel.cs" />
     <Compile Include="ViewModel\CheckoutAddressViewModel.cs" />
+    <Compile Include="ViewModel\CheckoutShipmentViewModel.cs" />
     <Compile Include="ViewModel\CityViewModel.cs" />
     <Compile Include="ViewModel\PagingInfo.cs" />
     <Compile Include="ViewModel\ProductAttributeViewModel.cs" />

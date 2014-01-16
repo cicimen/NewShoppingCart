@@ -7116,3 +7116,24 @@ td.visible-print {
     display: none !important;
   }
 }
+
+
+/*egemen*/
+@media (min-width: 1300px) {
+  .container {
+    width: 1270px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    width: 1370px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .container {
+    width: 1470px;
+  }
+}
+/*egemen*/

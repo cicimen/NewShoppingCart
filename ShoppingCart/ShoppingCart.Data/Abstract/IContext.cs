@@ -16,6 +16,7 @@ namespace ShoppingCart.Data.Abstract
         ICityRepository Cities { get; }
         ILanguageRepository Languages { get; }
         IOrderItemRepository OrderItems { get; }
+        IPaymentMethodRepository PaymentMethods { get; }
         IProductRepository Products { get; }
         IProductImageRepository ProductImages { get; }
         IShippingMethodRepository ShippingMethods { get; }

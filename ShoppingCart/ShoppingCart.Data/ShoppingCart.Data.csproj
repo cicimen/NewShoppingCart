@@ -67,6 +67,7 @@
     <Compile Include="Abstract\ICityRepository.cs" />
     <Compile Include="Abstract\IContext.cs" />
     <Compile Include="Abstract\ILanguageRepository.cs" />
+    <Compile Include="Abstract\IPaymentMethodRepository.cs" />
     <Compile Include="Abstract\IProductImageRepository.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Abstract\IRepository.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Concrete\AddressRepository.cs" />
     <Compile Include="Concrete\CartRepository.cs" />
     <Compile Include="Concrete\LanguageRepository.cs" />
+    <Compile Include="Concrete\PaymentMethodRepository.cs" />
     <Compile Include="Concrete\ProductImageRepository.cs" />
     <Compile Include="Concrete\ProductRepository.cs" />
     <Compile Include="Concrete\EfRepository.cs" />

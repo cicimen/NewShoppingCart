@@ -17,7 +17,7 @@ namespace ShoppingCart.Data.Concrete
 
         public Context(DbContext context = null, IAddressRepository addresses = null, ICartRepository carts = null, ICategoryRepository categories = null,ILanguageRepository languages = null,
              IOrderItemRepository orderItems=null,ICityRepository cities = null,IProductRepository products = null, IProductImageRepository productImages = null
-            ,IShippingMethodRepository shippingMethods = null)
+            ,IShippingMethodRepository shippingMethods = null,IPaymentMethodRepository paymentMethods = null)
         {
             _db = context ?? new ApplicationDbContext();
             Addresses = addresses ?? new AddressRepository(_db, true);
@@ -26,6 +26,7 @@ namespace ShoppingCart.Data.Concrete
             Cities = cities ?? new CityRepository(_db, true);
             Languages = languages ?? new LanguageRepository(_db, true);
             OrderItems = orderItems ?? new OrderItemRepository(_db, true);
+            PaymentMethods = paymentMethods ?? new PaymentMethodRepository(_db, true);
             Products = products ?? new ProductRepository(_db, true);
             ProductImages = productImages?? new ProductImageRepository(_db, true);
             ShippingMethods = shippingMethods ?? new ShippingMethodRepository(_db, true);
@@ -63,6 +64,11 @@ namespace ShoppingCart.Data.Concrete
             get;
             private set;
         }
+        public IPaymentMethodRepository PaymentMethods
+        {
+            get;
+            private set;
+        }
         public IProductRepository Products
         {
             get;
@@ -79,6 +85,8 @@ namespace ShoppingCart.Data.Concrete
             get;
             private set;
         }
+
+       
 
 
         public UserManager<ApplicationUser> UserManager

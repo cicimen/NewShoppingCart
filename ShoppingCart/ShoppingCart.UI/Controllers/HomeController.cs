@@ -21,7 +21,7 @@ namespace ShoppingCart.UI.Controllers
         //private IProductRepository productRepository;
 
         //TODO: Dışarıdan parametre olarak al bunu
-        public int PageSize = 5;
+        public int PageSize = 15;
         //public HomeController(IProductRepository productRepository)
         //{
         //    this.productRepository = productRepository;

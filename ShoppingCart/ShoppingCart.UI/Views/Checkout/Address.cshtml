@@ -14,8 +14,8 @@
     if (Html.GetLanguageCode() == "tr")
     {
         address = "Adres";
-        shippingMethod = "Kargo Seçenekleri";
-        paymentMethod = "Ödeme Seçenekleri";
+        shippingMethod = "Kargo";
+        paymentMethod = "Ödeme";
         orderReview = "Siparişi Tamamla";
         shipmentAddress = "Gönderi Adresi";
         continue1 = "Devam Et";
@@ -25,8 +25,8 @@
     else
     {
         address = "Address";
-        shippingMethod = "Shipping Method";
-        paymentMethod = "Payment Method";
+        shippingMethod = "Shipping";
+        paymentMethod = "Payment";
         orderReview = "Order Review";
         shipmentAddress = "Shipment Address";
         continue1 = "Continue";
@@ -37,7 +37,7 @@
 
 <section class="checkout">
         <div class="row">
-            <div class="col-md-9 col-lg-9">
+            <div class="col-md-7 col-lg-7">
                 <div class="box">
 
                     <!-- Checkout progress -->
@@ -62,12 +62,12 @@
                                     <span>@paymentMethod</span>
                                 </div>
                             </li>
-                            <li>
+                            @*<li>
                                 <div>
                                     <i class="icon-search icon-large"></i>
                                     <span>@orderReview</span>
                                 </div>
-                            </li>
+                            </li>*@
                         </ul>
                     </div>
                     <!-- End id="checkout-progress" -->
@@ -136,8 +136,8 @@
 
                         </div>
             </div>
-            <div class="col-md-3 col-lg-3">
-                @Html.Action("CartCheckoutSummary", "Cart", null)
+            <div class="col-md-5 col-lg-5">
+                @Html.Action("CartCheckoutSummary", "Checkout", null)
             </div>
         </div>
 </section>

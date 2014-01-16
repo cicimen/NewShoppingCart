@@ -4062,7 +4062,21 @@ html[xmlns] .slides {
 
 
 /*egemen*/
-.category-menu {
+/*.category-menu {
     margin-left: 30px;
+}*/
+
+
+.product-list {
+    margin-left : 30px;
 }
+.product-list li {
+list-style: none;
+width: 220px;
+float: right;
+margin-left: 20px;
+margin-bottom: 20px;
+}
+
 /*egemen*/
+

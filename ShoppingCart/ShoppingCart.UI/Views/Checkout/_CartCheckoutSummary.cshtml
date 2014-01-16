@@ -1,0 +1,116 @@
+﻿@model ShoppingCart.Service.ViewModel.ShoppingCartViewModel
+@{
+
+    Layout = null;
+    string subTotal = "";
+    string total2 = "";
+    string orderTotals = "";
+    string product = "";
+    string quantity = "";
+    string price = "";
+    string total = "";
+    if (Html.GetLanguageCode() == "tr")
+    {
+        subTotal = "Ara Toplam";
+        total2 = "Toplam";
+        orderTotals = "Sipariş toplamı";
+        product = "Ürün";
+        quantity = "Adet";
+        price = "BİRİM FİYAT";
+        total = "TOPLAM FİYAT";
+    }
+    else
+    {
+        subTotal = "Subtotal";
+        total2 = "Total";
+        orderTotals = "Order totals";
+        product = "Product";
+        quantity = "Quantity";
+        price = "Price";
+        total = "Total";
+    }
+}
+
+<div class="cart-details">
+    <div class="box cart-items">
+        <div class="hgroup title">
+            <h3>
+                @orderTotals
+            </h3>
+        </div>
+
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th class="col_product text-left">@product</th>
+                    <th class="col_qty text-right">@quantity</th>
+                    <th class="col_discount text-right">@price</th>
+                    <th class="col_total text-right">@total</th>
+                </tr>
+            </thead>
+            <tbody id="CartTable">
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr id="row-@item.RecordId">
+                        <td class="col_product text-left">
+                            <div class="image visible-desktop">
+                                <a href="@Url.Action("Index", "Product", new { productURLText = item.Product.ProductURLText })">
+                                    <img class="img-responsive" src="@Url.Action("GetImageThumbnail", "Image",
+                                                        new { productImageID = item.Product.ProductImages.OrderByDescending(x => x.DisplayOrder).First().ProductImageID })"
+                                         alt="Helen Romper" />
+                                </a>
+                            </div>
+                            <h5>
+                                @Html.ActionLink(item.Product.ProductTranslations.Single(x => x.Language.LanguageCode == @Html.GetLanguageCode()).ProductName,
+                                                                "Index", "Product", new { productURLText = item.Product.ProductURLText }, null)
+                                @if (item.VariationXml != null)
+                                {
+                                    @Html.GetProductVariantAndValueFromXml(item.VariationXml)
+                                }
+                            </h5>
+                        </td>
+                        <td class="col_qty text-right">
+                            <span class="discount">@item.Count</span>
+                            @*<input type="number" max="10" min="1" name="item_quantity[]" value="@item.Count" class="itemCount" id="@item.RecordId" />*@
+                        </td>
+
+
+                        <td class="col_discount text-right">
+                            <span class="discount">@item.Product.DiscountedPrice</span>
+                        </td>
+                        <td class="col_total text-right">
+                            <span class="total-price">@( item.Product.DiscountedPrice * item.Count)</span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <ul class="price-list">
+            <li>@subTotal: <strong>@Model.CartTotal</strong></li>
+            <li class="important">@total2: <strong>@Model.CartTotal</strong></li>
+        </ul>
+            @*<ul class="price-list">
+
+                @foreach (var item in @Model.CartItems)
+                {
+                    <li>
+                        @item.Product.ProductTranslations.Where(pt => pt.Language.LanguageCode == Html.GetLanguageCode()).SingleOrDefault().ProductName
+                    @if (item.VariationXml != null)
+                    {
+                        <br />
+                        @Html.GetProductVariantAndValueFromXml(item.VariationXml)
+                    }
+                    <strong>@item.Product.DiscountedPrice x @item.Count</strong>
+                </li>
+                }
+
+                <li>@subTotal: <strong>@Model.CartTotal</strong></li>
+                <li>@shipping: <strong>0</strong></li>
+                <li class="important">@total2: <strong>@Model.CartTotal</strong></li>
+            </ul>*@
+
+
+
+</div>
+</div>

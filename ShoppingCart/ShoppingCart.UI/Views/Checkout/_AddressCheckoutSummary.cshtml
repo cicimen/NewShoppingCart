@@ -1,0 +1,45 @@
+﻿@model ShoppingCart.Data.Entity.Address
+@{
+
+    Layout = null;
+    string subTotal = "";
+    string total2 = "";
+    string orderTotals = "";
+    string product = "";
+    string quantity = "";
+    string price = "";
+    string total = "";
+    if (Html.GetLanguageCode() == "tr")
+    {
+        subTotal = "Ara Toplam";
+        total2 = "Toplam";
+        orderTotals = "Sipariş toplamı";
+        product = "Ürün";
+        quantity = "Adet";
+        price = "BİRİM FİYAT";
+        total = "TOPLAM FİYAT";
+    }
+    else
+    {
+        subTotal = "Subtotal";
+        total2 = "Total";
+        orderTotals = "Order totals";
+        product = "Product";
+        quantity = "Quantity";
+        price = "Price";
+        total = "Total";
+    }
+}
+
+<div class="box highlight">
+    <div class="hgroup title">
+        <h3>@Model.AddressDescription</h3>
+        <h6>@Model.NameSurname</h6>
+        <h6>@Model.City.CityName</h6>
+        <h6>@Model.AddressLine1</h6>
+        <h6>@Model.AddressLine2</h6>
+        <h6>@Model.PostalCode</h6>
+        <h6>@Model.Phone</h6>
+        <h6>@Model.PhoneMobile</h6>
+    </div>
+</div>

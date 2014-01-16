@@ -369,7 +369,9 @@
     <Content Include="Views\Address\_Delete.cshtml" />
     <Content Include="Views\Checkout\_SelectedAddress.cshtml" />
     <Content Include="Views\Checkout\Shipment.cshtml" />
-    <Content Include="Views\Cart\_CartCheckoutSummary.cshtml" />
+    <Content Include="Views\Checkout\_CartCheckoutSummary.cshtml" />
+    <Content Include="Views\Checkout\Payment.cshtml" />
+    <Content Include="Views\Checkout\_AddressCheckoutSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

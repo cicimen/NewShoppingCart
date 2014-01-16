@@ -927,15 +927,660 @@ namespace ShoppingCart.UI.Models
             };
             #endregion
 
+            for (int i = 2; i < 12; i++)
+            {
+                #region
+
+                products.Add(
+                new Product
+                {
+                    ProductDisplayOrder = i + 5,
+                    Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="T-Shirt"),
+                    ProductURLText="good-bad-ugly-t-shirt"+i,
+                    DateCreated=DateTime.Now,
+                    DateModified = DateTime.Now,
+                    DiscountedPrice = 40,
+                    Enabled = true,
+                    Inventory =5,
+                    OriginalPrice = 40,
+                    RelatedProducts = new List<ProductRelation>{},
+                    ProductTranslations = new List<ProductTranslation>
+                    {
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Good, Bad, Ugly T-Shirt",
+                                ProductDescription="Good, Bad, Ugly T-Shirt",
+                            ProductLongDescription="Long Description budur."},
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Good, Bad, Ugly T-Shirt",ProductDescription="Good, Bad, Ugly T-Shirt"}
+                                            
+                    },
+                    ProductImages = new List<ProductImage>
+                    {
+                        new ProductImage
+                        {
+                            DisplayOrder=1,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/goodbadugly1.jpg"
+                        }
+                        //,
+                        //new ProductImage
+                        //{
+                        //    DisplayOrder=2,
+                        //    ProductImagePath = "path2"
+                        //}
+                    },
+                    ProductVariants = new List<ProductVariant>
+                        {
+                            new ProductVariant
+                            {
+                                Enabled=true,
+                                ProductVariantTranslations= new List<ProductVariantTranslation>
+                                                                {
+                                                                    new ProductVariantTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                        ProductVariantDescription ="",
+                                                                        ProductVariantName ="Renk"
+                                                                    },
+                                                                    new ProductVariantTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                        ProductVariantDescription ="",
+                                                                        ProductVariantName ="Color",
+                                                                    }
+                                                                },
+                                ProductVariantValues = new List<ProductVariantValue>
+                                                                {
+                                                                     new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 3,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Siyah"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="Black"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 4,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Beyaz"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="White"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 2,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Kırmızı"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="Red"
+                                                                                }
+                                                                            }
+                                                                     }
+                                                                }
+                            }
+                        }
+                }
+                );
+
+                products.Add(
+                new Product
+                {
+                    ProductDisplayOrder = i + 5,
+                    Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Erkek Saat"),
+                    ProductURLText="deri-erkek-saat"+i,
+                    DateCreated=DateTime.Now,
+                    DateModified = DateTime.Now,
+                    DiscountedPrice = 40,
+                    Enabled = true,
+                    Inventory =5,
+                    OriginalPrice = 40,
+                    RelatedProducts = new List<ProductRelation>{},
+                    ProductTranslations = new List<ProductTranslation>
+                    {
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Deri Erkek Saat",ProductDescription="Özel Tasarım Erkek Saat Deri"},
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Leather Men Watch",ProductDescription="Special Design Men Watch Leather "}
+                                            
+                    },
+                    ProductImages = new List<ProductImage>
+                    {
+                        new ProductImage
+                        {
+                            DisplayOrder=1,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/derierkeksaat1.jpg"
+                        },
+                        new ProductImage
+                        {
+                            DisplayOrder=2,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/derierkeksaat2.jpg"
+                        }
+                    },
+                    ProductVariants = new List<ProductVariant>
+                        {
+                            new ProductVariant
+                            {
+                                Enabled=true,
+                                ProductVariantTranslations= new List<ProductVariantTranslation>
+                                                                {
+                                                                    new ProductVariantTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                        ProductVariantDescription ="",
+                                                                        ProductVariantName ="Renk"
+                                                                    },
+                                                                    new ProductVariantTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                        ProductVariantDescription ="",
+                                                                        ProductVariantName ="Color",
+                                                                    }
+                                                                },
+                                ProductVariantValues = new List<ProductVariantValue>
+                                                                {
+                                                                     new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 4,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Siyah"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="Black"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 5,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Beyaz"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="White"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 12,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Kırmızı"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="Red"
+                                                                                }
+                                                                            }
+                                                                     }
+                                                                }
+                            }
+                        }
+                }
+                );
+
+                products.Add(
+                new Product
+                {
+                    ProductDisplayOrder = i + 5,
+                    Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Kadın Saat"),
+                    ProductURLText="deri-kadin-saat"+i,
+                    DateCreated=DateTime.Now,
+                    DateModified = DateTime.Now,
+                    DiscountedPrice = 60,
+                    Enabled = true,
+                    Inventory =15,
+                    OriginalPrice = 60,
+                    RelatedProducts = new List<ProductRelation>{},
+                    ProductTranslations = new List<ProductTranslation>
+                    {
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Deri Kadın Saat",ProductDescription="Özel Tasarım Kadın Saat Deri"},
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Leather Women Watch",ProductDescription="Special Design Women Watch Leather "}
+                                            
+                    },
+                    ProductImages = new List<ProductImage>
+                    {
+                        new ProductImage
+                        {
+                            DisplayOrder=1,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/derikadinsaat1.jpg"
+                        }
+                        //,
+                        //new ProductImage
+                        //{
+                        //    DisplayOrder=2,
+                        //    ProductImagePath = "path2"
+                        //}
+                    },
+                    ProductVariants = new List<ProductVariant>
+                        {
+                            new ProductVariant
+                            {
+                                Enabled=true,
+                                ProductVariantTranslations= new List<ProductVariantTranslation>
+                                                                {
+                                                                    new ProductVariantTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                        ProductVariantDescription ="",
+                                                                        ProductVariantName ="Renk"
+                                                                    },
+                                                                    new ProductVariantTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                        ProductVariantDescription ="",
+                                                                        ProductVariantName ="Color",
+                                                                    }
+                                                                },
+                                ProductVariantValues = new List<ProductVariantValue>
+                                                                {
+                                                                     new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 4,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Siyah"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="Black"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 8,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Beyaz"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="White"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 9,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Kırmızı"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="Red"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 11,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Mavi"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="Blue"
+                                                                                }
+                                                                            }
+                                                                     }
+                                                                }
+                            }
+                        }
+                }
+
+                );
+
+                products.Add(new Product
+                {
+                    Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Cüzdan"),
+                    ProductDisplayOrder = i + 5,
+                    ProductURLText="marilyn-monroe-deri-cuzdan"+i,
+                    DateCreated=DateTime.Now,
+                    DateModified = DateTime.Now,
+                    DiscountedPrice = 40,
+                    Enabled = true,
+                    Inventory =5,
+                    OriginalPrice = 40,
+                    RelatedProducts = new List<ProductRelation>{},
+                    ProductTranslations = new List<ProductTranslation>
+                    {
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Marilyn Monroe Deri Cüzdan",ProductDescription="Marilyn Monroe Deri Cüzdan"},
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Marilyn Monroe Leather Wallet",ProductDescription="Marilyn Monroe Leather Wallet"}
+                                            
+                    },
+                    ProductImages = new List<ProductImage>
+                    {
+                        new ProductImage
+                        {
+                            DisplayOrder=1,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/marilynmonroedericuzdan1.jpg"
+                        },
+                        new ProductImage
+                        {
+                            DisplayOrder=2,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/marilynmonroedericuzdan2.jpg"
+                        },
+                        new ProductImage
+                        {
+                            DisplayOrder=2,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/marilynmonroedericuzdan3.jpg"
+                        }
+                    },
+                    ProductVariants = new List<ProductVariant>
+                        {
+                            new ProductVariant
+                            {
+                                Enabled=true,
+                                ProductVariantTranslations= new List<ProductVariantTranslation>
+                                                                {
+                                                                    new ProductVariantTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                        ProductVariantDescription ="",
+                                                                        ProductVariantName ="Renk"
+                                                                    },
+                                                                    new ProductVariantTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                        ProductVariantDescription ="",
+                                                                        ProductVariantName ="Color",
+                                                                    }
+                                                                },
+                                ProductVariantValues = new List<ProductVariantValue>
+                                                                {
+                                                                     new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 4,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Siyah"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="Black"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 6,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Beyaz"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="White"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 15,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Kırmızı"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="Red"
+                                                                                }
+                                                                            }
+                                                                     }
+                                                                }
+                            }
+                        }
+                });
+
+                products.Add(new Product
+                {
+                    Category = categories.Single(x=> x.CategoryTranslations.Single(y=> y.Language.LanguageCode =="tr").CategoryName =="Kadın Ceket"),
+                    ProductURLText="heidi-kaban"+i,
+                    ProductDisplayOrder = i + 5,
+                    DateCreated=DateTime.Now,
+                    DateModified = DateTime.Now,
+                    DiscountedPrice = 40,
+                    Enabled = true,
+                    Inventory =5,
+                    OriginalPrice = 40,
+                    RelatedProducts = new List<ProductRelation>{},
+                    ProductTranslations = new List<ProductTranslation>
+                    {
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Heidi Kaban",ProductDescription="Heidi Kaban"},
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Heidi Coat",ProductDescription="Heidi Coat"}
+                                            
+                    },
+                    ProductImages = new List<ProductImage>
+                    {
+                        new ProductImage
+                        {
+                            DisplayOrder=1,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/hedicoat1.jpg"
+                        }
+                    },
+                    ProductVariants = new List<ProductVariant>
+                        {
+                            new ProductVariant
+                            {
+                                Enabled=true,
+                                ProductVariantTranslations= new List<ProductVariantTranslation>
+                                                                {
+                                                                    new ProductVariantTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                        ProductVariantDescription ="",
+                                                                        ProductVariantName ="Renk"
+                                                                    },
+                                                                    new ProductVariantTranslation
+                                                                    {
+                                                                        Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                        ProductVariantDescription ="",
+                                                                        ProductVariantName ="Color",
+                                                                    }
+                                                                },
+                                ProductVariantValues = new List<ProductVariantValue>
+                                                                {
+                                                                     new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 6,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Siyah"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="Black"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 4,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Beyaz"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="White"
+                                                                                }
+                                                                            }
+                                                                     },
+                                                                      new ProductVariantValue
+                                                                     {
+                                                                        Inventory = 12,
+                                                                        Enabled = true,
+                                                                        ProductVariantValueTranslations = new List<ProductVariantValueTranslation>
+                                                                            {
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="tr"),
+                                                                                    ProductVariantValueName ="Kırmızı"
+                                                                                },
+                                                                                new ProductVariantValueTranslation
+                                                                                {
+                                                                                    Language =languages.Single(x=> x.LanguageCode =="en"),
+                                                                                    ProductVariantValueName ="Red"
+                                                                                }
+                                                                            }
+                                                                     }
+                                                                }
+                            }
+                        }
+                });
+
+                products.Add(new Product
+                {
+                    Category = categories.Single(x => x.CategoryTranslations.Single(y => y.Language.LanguageCode == "tr").CategoryName == "Yazlık Kadın Ceket"),
+                    ProductURLText = "modagram-fleo-cicekli-bomber-ceket"+i,
+                    DateCreated = DateTime.Now,
+                    DateModified = DateTime.Now,
+                    ProductDisplayOrder = i + 5,
+                    DiscountedPrice = 40,
+                    Enabled = true,
+                    Inventory = 5,
+                    OriginalPrice = 40,
+                    RelatedProducts = new List<ProductRelation> { },
+                    ProductTranslations = new List<ProductTranslation>
+                    {
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="tr"),ProductName ="Modagram Fleo Çiçekli Bomber Ceket",ProductDescription="Modagram Fleo Çiçekli Bomber Ceket"},
+                        new ProductTranslation
+                            {Language = languages.Single(x=>x.LanguageCode =="en"),ProductName ="Modagram Fleo Bomber Coat",ProductDescription="Modagram Fleo Bomber Coat"}
+                                            
+                    },
+                    ProductImages = new List<ProductImage>
+                    {
+                        new ProductImage
+                        {
+                            DisplayOrder=1,
+                            ProductImageMimeType ="image/jpeg",
+                            ProductImagePath = "/Content/ProductImages/modagram-fleo-cicekli-bomber-ceket.jpg"
+                        }
+                    }
+                });
+                #endregion
+            }
+
             
             foreach (var item in cities)
             {
                 context.Cities.Add(item);
             }
 
+
             foreach (var item in products)
             {
-                context.Products.Add(item);
+                context.Products.Add(item);               
             }
 
             //base.Seed(context);
